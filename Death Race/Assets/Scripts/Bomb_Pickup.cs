@@ -26,7 +26,8 @@ public class Bomb_Pickup : MonoBehaviour
         if (coll.gameObject.tag.Contains("Player"))
         {
             coll.transform.rotation = this.transform.rotation;
-            Instantiate(Bomb_Follow, new Vector3(coll.transform.position.x, coll.transform.position.y - 1.63f, coll.transform.position.z), coll.transform.rotation, coll.transform);
+            coll.gameObject.GetComponent<Car_Controller>().bombFollow = Instantiate(Bomb_Follow, new Vector3(coll.transform.position.x, coll.transform.position.y - 1.63f, coll.transform.position.z), coll.transform.rotation, coll.transform);
+            coll.gameObject.GetComponent<Car_Controller>().hasBomb = true;
             coll.transform.rotation = collRotation;
             Destroy(this.gameObject);
         }

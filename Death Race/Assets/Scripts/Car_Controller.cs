@@ -9,6 +9,9 @@ public class Car_Controller : MonoBehaviour
     float speed = 10f;
     float turnPower = -100f;
     public int playerNumber;
+    public bool hasBomb = false;
+    public GameObject bombFollow;
+    GameObject startLight;
 
     #endregion
 
@@ -17,7 +20,7 @@ public class Car_Controller : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        startLight = GameObject.FindGameObjectWithTag("StartLight");
     }
 
     #endregion
@@ -31,60 +34,76 @@ public class Car_Controller : MonoBehaviour
 
         rb.velocity = getForewordVelocity(rb);
 
-        if(playerNumber == 1)
+        if (startLight == null)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (playerNumber == 1)
             {
-                rb.AddForce(transform.up * speed);
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(transform.up * speed);
+                }
 
-            if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(transform.up * (-speed / 2));
+                }
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb.angularVelocity = -turnPower;
+                }
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb.angularVelocity = turnPower;
+                }
+
+                if (hasBomb && Input.GetKeyDown(KeyCode.Space))
+                {
+                    hasBomb = false;
+                    bombFollow.GetComponent<Bomb_Drop>().Drop_Bomb();
+                }
+            }
+            else if (playerNumber == 2)
             {
-                rb.AddForce(transform.up * (-speed / 2));
-            }
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    rb.AddForce(transform.up * speed);
+                }
 
-            if(Input.GetKey(KeyCode.A))
-            {
-                rb.angularVelocity = -turnPower;
-            }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    rb.AddForce(transform.up * (-speed / 2));
+                }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.angularVelocity = turnPower;
-            }
-        }
-        else if (playerNumber == 2)
-        {
-            if (Input.GetKey(KeyCode.RightShift))
-            {
-                rb.AddForce(transform.up * speed);
-            }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    rb.angularVelocity = -turnPower;
+                }
 
-            if (Input.GetKey(KeyCode.RightControl))
-            {
-                rb.AddForce(transform.up * (-speed / 2));
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rb.angularVelocity = turnPower;
+                }
+
+                if (hasBomb && Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    hasBomb = false;
+                    bombFollow.GetComponent<Bomb_Drop>().Drop_Bomb();
+                }
+
+                //if (Input.GetButton("Accelerate"))
+                //{
+                //    rb.AddForce(transform.up * speed);
+                //}
+
+                //if (Input.GetButton("Brake"))
+                //{
+                //    rb.AddForce(transform.up * (-speed / 2));
+                //}
+
+                //rb.angularVelocity = Input.GetAxis("Horizontal") * turnPower;
             }
-
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                rb.angularVelocity = -turnPower;
-            }
-
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                rb.angularVelocity = turnPower;
-            }
-            //if (Input.GetButton("Accelerate"))
-            //{
-            //    rb.AddForce(transform.up * speed);
-            //}
-
-            //if (Input.GetButton("Brake"))
-            //{
-            //    rb.AddForce(transform.up * (-speed / 2));
-            //}
-
-            //rb.angularVelocity = Input.GetAxis("Horizontal") * turnPower;
         }
     }
 

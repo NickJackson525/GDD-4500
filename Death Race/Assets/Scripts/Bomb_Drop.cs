@@ -15,10 +15,12 @@ public class Bomb_Drop : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(Bomb, transform.position, transform.rotation);
-            Destroy(this.gameObject);
-        }
+
 	}
+
+    public void Drop_Bomb()
+    {
+        Instantiate(Bomb, transform.position, transform.rotation);
+        Destroy(this.gameObject);
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fire_Timer : MonoBehaviour
 {
     public int fireTimer = 240;
-
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -25,7 +25,7 @@ public class Fire_Timer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag.Contains("Player"))
         {
             coll.gameObject.GetComponent<Rigidbody2D>().velocity = coll.gameObject.GetComponent<Rigidbody2D>().velocity * .85f;
             Destroy(this.gameObject);
