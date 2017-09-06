@@ -9,6 +9,11 @@ public class Start_Countdown : MonoBehaviour
     public Sprite threeRedLightsOn;
     public Sprite allGreenLightsOn;
     public int timer = 60;
+    public GameObject WASD;
+    public GameObject Arrows;
+    public GameObject Enter_Space;
+    public GameObject Enter_Text;
+    public GameObject Space_Text;
 
     // Use this for initialization
     void Start ()
@@ -43,6 +48,11 @@ public class Start_Countdown : MonoBehaviour
                     break;
                 case "3_Green_On":
                     Destroy(this.gameObject);
+                    Destroy(WASD);
+                    Destroy(Arrows);
+                    Destroy(Enter_Space);
+                    Destroy(Enter_Text);
+                    Destroy(Space_Text);
                     break;
                 default:
                     break;

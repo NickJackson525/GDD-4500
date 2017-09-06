@@ -7,7 +7,7 @@ public class Car_Controller : MonoBehaviour
     #region Variables
 
     float speed = 10f;
-    float turnPower = -100f;
+    float turnPower = -85f;
     public int playerNumber;
     public bool hasBomb = false;
     public GameObject bombFollow;
