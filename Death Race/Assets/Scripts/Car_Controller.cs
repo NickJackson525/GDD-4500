@@ -10,8 +10,11 @@ public class Car_Controller : MonoBehaviour
     float turnPower = -85f;
     public int playerNumber;
     public bool hasBomb = false;
+    public bool hasShield = false;
+    public bool canMove = true;
     public GameObject bombFollow;
     GameObject startLight;
+    public int checkpointsPassed = 0;
 
     #endregion
 
@@ -34,7 +37,7 @@ public class Car_Controller : MonoBehaviour
 
         rb.velocity = getForewordVelocity(rb);
 
-        if (startLight == null)
+        if ((startLight.activeSelf == false) && canMove)
         {
             if (playerNumber == 1)
             {

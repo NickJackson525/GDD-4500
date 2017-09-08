@@ -30,5 +30,10 @@ public class Fire_Timer : MonoBehaviour
             coll.gameObject.GetComponent<Rigidbody2D>().velocity = coll.gameObject.GetComponent<Rigidbody2D>().velocity * .85f;
             Destroy(this.gameObject);
         }
+
+        if(coll.gameObject.tag == "Shield")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

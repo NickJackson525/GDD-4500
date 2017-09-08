@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50679947296462208}
   - component: {fileID: 60379311363531246}
   - component: {fileID: 114919621015397242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Car 2
   m_TagString: Player2
   m_Icon: {fileID: 0}
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 2
   hasBomb: 0
+  hasShield: 0
   bombFollow: {fileID: 0}
 --- !u!212 &212780873430421548
 SpriteRenderer:

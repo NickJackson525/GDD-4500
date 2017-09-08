@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 212456961334373898}
   - component: {fileID: 95330594107739468}
   - component: {fileID: 114180697553932658}
-  m_Layer: 0
+  - component: {fileID: 50090442038597530}
+  - component: {fileID: 70651992509186772}
+  m_Layer: 10
   m_Name: Shield_Animation_Close
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,12 +38,47 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1253630639329386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50090442038597530
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253630639329386}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &70651992509186772
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253630639329386}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009295464, y: -0.0029765766}
+  m_Size: {x: 1.252882, y: 1.2826099}
+  m_Direction: 0
 --- !u!95 &95330594107739468
 Animator:
   serializedVersion: 3
@@ -70,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c913ea9b872135347b93d254ddffac3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carToFollow: {fileID: 0}
 --- !u!212 &212456961334373898
 SpriteRenderer:
   m_ObjectHideFlags: 1

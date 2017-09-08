@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shield_Animation_Close : MonoBehaviour
 {
     string currentSprite;
+    public GameObject carToFollow;
+    GameObject createdShield;
 
     // Use this for initialization
     void Start ()
@@ -19,7 +21,12 @@ public class Shield_Animation_Close : MonoBehaviour
 
         if (currentSprite == "Shield_19")
         {
+            carToFollow.GetComponent<Car_Controller>().hasShield = false;
             Destroy(this.gameObject);
         }
+        
+        this.transform.position = new Vector3(carToFollow.transform.position.x, carToFollow.transform.position.y, -1);
+        this.transform.rotation = carToFollow.transform.rotation;
+        this.transform.Rotate(0, 0, 180);
     }
 }

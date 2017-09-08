@@ -47,12 +47,12 @@ public class Start_Countdown : MonoBehaviour
                     this.gameObject.GetComponent<SpriteRenderer>().sprite = allGreenLightsOn;
                     break;
                 case "3_Green_On":
-                    Destroy(this.gameObject);
-                    Destroy(WASD);
-                    Destroy(Arrows);
-                    Destroy(Enter_Space);
-                    Destroy(Enter_Text);
-                    Destroy(Space_Text);
+                    this.gameObject.SetActive(false);
+                    WASD.SetActive(false);
+                    Arrows.SetActive(false);
+                    Enter_Space.SetActive(false);
+                    Enter_Text.SetActive(false);
+                    Space_Text.SetActive(false);
                     break;
                 default:
                     break;

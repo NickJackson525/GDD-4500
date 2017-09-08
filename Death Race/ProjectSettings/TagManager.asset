@@ -8,6 +8,12 @@ TagManager:
   - Player1
   - Player2
   - StartLight
+  - Shield
+  - Checkpoint
+  - P1 Win
+  - P1 Lose
+  - P2 Win
+  - P2 Lose
   layers:
   - Default
   - TransparentFX
@@ -19,8 +25,8 @@ TagManager:
   - 
   - Player 1
   - Player 2
-  - 
-  - 
+  - Shield
+  - Players
   - 
   - 
   - 
