@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Car_Controller : MonoBehaviour
 {
@@ -13,8 +14,13 @@ public class Car_Controller : MonoBehaviour
     public bool hasShield = false;
     public bool canMove = true;
     public GameObject bombFollow;
+    public GameObject kittenCannon;
     GameObject startLight;
     public int checkpointsPassed = 0;
+    public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+    public bool hasPickup = false;
+    Quaternion initialRotation;
+    Quaternion tempRotation;
 
     #endregion
 
@@ -24,6 +30,7 @@ public class Car_Controller : MonoBehaviour
     void Start()
     {
         startLight = GameObject.FindGameObjectWithTag("StartLight");
+        initialRotation = transform.rotation;
     }
 
     #endregion
@@ -61,10 +68,25 @@ public class Car_Controller : MonoBehaviour
                     rb.angularVelocity = turnPower;
                 }
 
-                if (hasBomb && Input.GetKeyDown(KeyCode.Space))
+                if (hasPickup && Input.GetKeyUp(KeyCode.Space))
                 {
-                    hasBomb = false;
-                    bombFollow.GetComponent<Bomb_Drop>().Drop_Bomb();
+                    switch(currentPickup)
+                    {
+                        case Game_Manager.Pickup.FAKE_PEDESTRIAN:
+                            break;
+                        case Game_Manager.Pickup.HARPOON:
+                            break;
+                        case Game_Manager.Pickup.KITTEN_CANNON:
+                            tempRotation = transform.rotation;
+                            transform.rotation = initialRotation;
+                            Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
+                            transform.rotation = tempRotation;
+                            break;
+                        case Game_Manager.Pickup.SHIELD:
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             else if (playerNumber == 2)
@@ -89,23 +111,26 @@ public class Car_Controller : MonoBehaviour
                     rb.angularVelocity = turnPower;
                 }
 
-                if (hasBomb && Input.GetKeyDown(KeyCode.KeypadEnter))
+                if (hasPickup && Input.GetKeyUp(KeyCode.KeypadEnter))
                 {
-                    hasBomb = false;
-                    bombFollow.GetComponent<Bomb_Drop>().Drop_Bomb();
+                    switch (currentPickup)
+                    {
+                        case Game_Manager.Pickup.FAKE_PEDESTRIAN:
+                            break;
+                        case Game_Manager.Pickup.HARPOON:
+                            break;
+                        case Game_Manager.Pickup.KITTEN_CANNON:
+                            tempRotation = transform.rotation;
+                            transform.rotation = initialRotation;
+                            Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
+                            transform.rotation = tempRotation;
+                            break;
+                        case Game_Manager.Pickup.SHIELD:
+                            break;
+                        default:
+                            break;
+                    }
                 }
-
-                //if (Input.GetButton("Accelerate"))
-                //{
-                //    rb.AddForce(transform.up * speed);
-                //}
-
-                //if (Input.GetButton("Brake"))
-                //{
-                //    rb.AddForce(transform.up * (-speed / 2));
-                //}
-
-                //rb.angularVelocity = Input.GetAxis("Horizontal") * turnPower;
             }
         }
     }
