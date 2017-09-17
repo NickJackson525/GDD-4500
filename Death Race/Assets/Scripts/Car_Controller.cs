@@ -48,6 +48,8 @@ public class Car_Controller : MonoBehaviour
         {
             if (playerNumber == 1)
             {
+                #region Player 1 Controls
+
                 if (Input.GetKey(KeyCode.W))
                 {
                     rb.AddForce(transform.up * speed);
@@ -81,6 +83,7 @@ public class Car_Controller : MonoBehaviour
                             transform.rotation = initialRotation;
                             Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
                             transform.rotation = tempRotation;
+                            hasPickup = false;
                             break;
                         case Game_Manager.Pickup.SHIELD:
                             break;
@@ -88,9 +91,13 @@ public class Car_Controller : MonoBehaviour
                             break;
                     }
                 }
+
+                #endregion
             }
             else if (playerNumber == 2)
             {
+                #region Player 2 Controls
+
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     rb.AddForce(transform.up * speed);
@@ -124,6 +131,7 @@ public class Car_Controller : MonoBehaviour
                             transform.rotation = initialRotation;
                             Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
                             transform.rotation = tempRotation;
+                            hasPickup = false;
                             break;
                         case Game_Manager.Pickup.SHIELD:
                             break;
@@ -131,6 +139,8 @@ public class Car_Controller : MonoBehaviour
                             break;
                     }
                 }
+
+                #endregion
             }
         }
     }

@@ -29,7 +29,7 @@ public class Pedestrian : MonoBehaviour
             //only 50% chance to give pickup
             if(Random.Range(0, 1) == 0)
             {
-                switch(Random.Range(0, 4))
+                switch(Random.Range(2, 2))
                 {
                     case 0:
                         coll.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;

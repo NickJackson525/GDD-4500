@@ -132,7 +132,7 @@ MonoBehaviour:
     type: 2}
   checkpointsPassed: 0
   currentPickup: 1
-  hasPickup: 1
+  hasPickup: 0
 --- !u!212 &212259609622620662
 SpriteRenderer:
   m_ObjectHideFlags: 1
