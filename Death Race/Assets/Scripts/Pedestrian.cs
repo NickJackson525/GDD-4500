@@ -6,6 +6,8 @@ public class Pedestrian : MonoBehaviour
 {
     #region Variables
 
+    public GameObject kittenIcon;
+    GameObject createdInstance;
     int pickupChance = 0;
 
     #endregion
@@ -27,7 +29,7 @@ public class Pedestrian : MonoBehaviour
         if(coll.gameObject.tag.Contains("Player"))
         {
             //only 50% chance to give pickup
-            if(Random.Range(0, 1) == 0)
+            if(Random.Range(0, 2) == 0)
             {
                 switch(Random.Range(2, 2))
                 {
@@ -39,6 +41,8 @@ public class Pedestrian : MonoBehaviour
                         break;
                     case 2:
                         coll.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+                        createdInstance = Instantiate(kittenIcon, transform.position, transform.rotation);
+                        createdInstance.GetComponent<Kitten_Icon>().followTarget = coll.gameObject;
                         break;
                     case 3:
                         coll.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.SHIELD;

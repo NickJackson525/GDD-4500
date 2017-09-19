@@ -14,6 +14,7 @@ TagManager:
   - P1 Lose
   - P2 Win
   - P2 Lose
+  - Racetrack
   layers:
   - Default
   - TransparentFX

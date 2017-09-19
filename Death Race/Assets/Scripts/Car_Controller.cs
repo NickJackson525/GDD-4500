@@ -15,12 +15,15 @@ public class Car_Controller : MonoBehaviour
     public bool canMove = true;
     public GameObject bombFollow;
     public GameObject kittenCannon;
+    public GameObject p1Canvas;
+    public GameObject p2Canvas;
     GameObject startLight;
     public int checkpointsPassed = 0;
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
     public bool hasPickup = false;
     Quaternion initialRotation;
     Quaternion tempRotation;
+    public int health = 100;
 
     #endregion
 
@@ -143,11 +146,16 @@ public class Car_Controller : MonoBehaviour
                 #endregion
             }
         }
+
+        if (health <= 0)
+        {
+            Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+        }
     }
 
     #endregion
 
-    #region Methods
+    #region Custom Methods
 
     Vector2 getForewordVelocity(Rigidbody2D rb)
     {
@@ -157,6 +165,18 @@ public class Car_Controller : MonoBehaviour
     Vector2 getSidewaysVelocity(Rigidbody2D rb)
     {
         return transform.right * Vector2.Dot(rb.velocity, transform.right);
+    }
+
+    #endregion
+
+    #region Collision Methods
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if((coll.gameObject.tag.Contains("Player")) || (coll.gameObject.tag.Contains("Racetrack")))
+        {
+            health -= 10;
+        }
     }
 
     #endregion

@@ -129,9 +129,12 @@ MonoBehaviour:
   bombFollow: {fileID: 0}
   kittenCannon: {fileID: 1183261969105206, guid: 6533b98c83051ab438f59bc47e3c3de7,
     type: 2}
+  p1Canvas: {fileID: 1411294811306196, guid: b7e3c89fc677c3240ae42435efc96f08, type: 2}
+  p2Canvas: {fileID: 1186337377307582, guid: 7ecf89dcedd58d24abc59682331888d4, type: 2}
   checkpointsPassed: 0
   currentPickup: 1
   hasPickup: 0
+  health: 100
 --- !u!212 &212780873430421548
 SpriteRenderer:
   m_ObjectHideFlags: 1
