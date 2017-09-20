@@ -20,7 +20,7 @@ public class Shield_Animation_Close : MonoBehaviour
 
         if (currentSprite == "Shield_19")
         {
-            carToFollow.GetComponent<Car_Controller>().hasShield = false;
+            carToFollow.GetComponent<Car_Controller>().hasPickup = false;
             Destroy(this.gameObject);
         }
         

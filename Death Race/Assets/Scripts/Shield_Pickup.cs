@@ -21,11 +21,10 @@ public class Shield_Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag.Contains("Player") && !coll.GetComponent<Car_Controller>().hasShield)
+        if (coll.gameObject.tag.Contains("Player"))
         {
             createdShield = Instantiate(Shield, new Vector3(coll.transform.position.x, coll.transform.position.y - 1.63f, coll.transform.position.z), coll.transform.rotation, coll.transform);
             createdShield.GetComponent<Shield_Animation_Create>().carToFollow = coll.gameObject;
-            coll.gameObject.GetComponent<Car_Controller>().hasShield = true;
             Destroy(this.gameObject);
         }
     }

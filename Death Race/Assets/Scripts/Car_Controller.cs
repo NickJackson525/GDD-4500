@@ -13,11 +13,12 @@ public class Car_Controller : MonoBehaviour
     public bool hasBomb = false;
     public bool hasShield = false;
     public bool canMove = true;
-    public GameObject bombFollow;
     public GameObject kittenCannon;
+    public GameObject shield;
     public GameObject p1Canvas;
     public GameObject p2Canvas;
     GameObject startLight;
+    GameObject createdPickup;
     public int checkpointsPassed = 0;
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
     public bool hasPickup = false;
@@ -89,6 +90,9 @@ public class Car_Controller : MonoBehaviour
                             hasPickup = false;
                             break;
                         case Game_Manager.Pickup.SHIELD:
+                            createdPickup = Instantiate(shield, new Vector3(transform.position.x, transform.position.y - 1.63f, transform.position.z), transform.rotation, transform);
+                            createdPickup.GetComponent<Shield_Animation_Create>().carToFollow = this.gameObject;
+                            hasPickup = false;
                             break;
                         default:
                             break;
@@ -137,6 +141,9 @@ public class Car_Controller : MonoBehaviour
                             hasPickup = false;
                             break;
                         case Game_Manager.Pickup.SHIELD:
+                            createdPickup = Instantiate(shield, new Vector3(transform.position.x, transform.position.y - 1.63f, transform.position.z), transform.rotation, transform);
+                            createdPickup.GetComponent<Shield_Animation_Create>().carToFollow = this.gameObject;
+                            hasPickup = false;
                             break;
                         default:
                             break;
