@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4653320904257086}
   - component: {fileID: 212598683876050554}
-  - component: {fileID: 114272592443496084}
+  - component: {fileID: 114584523111939002}
   m_Layer: 0
   m_Name: KittenIcon
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114272592443496084
+--- !u!114 &114584523111939002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

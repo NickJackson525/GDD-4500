@@ -12,8 +12,6 @@ public class Start_Countdown : MonoBehaviour
     public GameObject WASD;
     public GameObject Arrows;
     public GameObject Enter_Space;
-    public GameObject Enter_Text;
-    public GameObject Space_Text;
 
     // Use this for initialization
     void Start ()
@@ -51,8 +49,6 @@ public class Start_Countdown : MonoBehaviour
                     WASD.SetActive(false);
                     Arrows.SetActive(false);
                     Enter_Space.SetActive(false);
-                    Enter_Text.SetActive(false);
-                    Space_Text.SetActive(false);
                     break;
                 default:
                     break;

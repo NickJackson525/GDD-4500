@@ -146,11 +146,6 @@ public class Car_Controller : MonoBehaviour
                 #endregion
             }
         }
-
-        if (health <= 0)
-        {
-            Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
-        }
     }
 
     #endregion
@@ -176,6 +171,11 @@ public class Car_Controller : MonoBehaviour
         if((coll.gameObject.tag.Contains("Player")) || (coll.gameObject.tag.Contains("Racetrack")))
         {
             health -= 10;
+
+            if (health <= 0)
+            {
+                Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+            }
         }
     }
 

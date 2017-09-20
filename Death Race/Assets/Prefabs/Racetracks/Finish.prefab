@@ -78,14 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee722de7b9acdb64cb9ea07af211324f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1Win: []
-  p1Lose: []
-  p2Win: []
-  p2Lose: []
-  p1Canvas: {fileID: 1411294811306196, guid: b7e3c89fc677c3240ae42435efc96f08, type: 2}
-  p2Canvas: {fileID: 1186337377307582, guid: 7ecf89dcedd58d24abc59682331888d4, type: 2}
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 1040974732349330, guid: 7ee4cade5f4455746bacf76164cbeed3, type: 2}
+  player2: {fileID: 1965051632568976, guid: 743c073877556fe46b1c227ea9d16215, type: 2}
+  p1Canvas: {fileID: 0}
+  p2Canvas: {fileID: 0}
 --- !u!212 &212364778083764762
 SpriteRenderer:
   m_ObjectHideFlags: 1

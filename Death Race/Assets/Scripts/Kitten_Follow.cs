@@ -10,7 +10,6 @@ public class Kitten_Follow : MonoBehaviour
     int sequenceGoal = 4;
     SwerveDirection nextDirection = SwerveDirection.LEFT;
     public Vector3 targetPosition;
-    float speed = 30f;
 
 	// Use this for initialization
 	void Start ()

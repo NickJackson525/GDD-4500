@@ -6,7 +6,6 @@ public class Shield_Animation_Close : MonoBehaviour
 {
     string currentSprite;
     public GameObject carToFollow;
-    GameObject createdShield;
 
     // Use this for initialization
     void Start ()

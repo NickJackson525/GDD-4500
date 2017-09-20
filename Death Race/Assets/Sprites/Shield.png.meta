@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1e15bdb4614d94f41aaa51fbdcdee3f2
-timeCreated: 1504290263
+timeCreated: 1505871590
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -64,7 +64,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 794, y: 428, z: 22, w: 205}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -198,7 +198,7 @@ TextureImporter:
       name: Shield_6
       rect:
         serializedVersion: 2
-        x: 219
+        x: 221
         y: 423
         width: 139
         height: 115

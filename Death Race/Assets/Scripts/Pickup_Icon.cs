@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kitten_Icon : MonoBehaviour
+public class Pickup_Icon : MonoBehaviour
 {
     public GameObject followTarget;
 
