@@ -31,4 +31,12 @@ public class Shield_Animation_Create : MonoBehaviour
         this.transform.rotation = carToFollow.transform.rotation;
         this.transform.Rotate(0, 0, 180);
     }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag.Contains("Racetrack") || coll.gameObject.tag.Contains("Powerup"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

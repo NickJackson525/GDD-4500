@@ -7,25 +7,27 @@ public class Car_Controller : MonoBehaviour
 {
     #region Variables
 
-    float speed = 10f;
-    float turnPower = -85f;
-    public int playerNumber;
-    public bool hasBomb = false;
-    public bool hasShield = false;
-    public bool canMove = true;
+    public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
     public GameObject kittenCannon;
     public GameObject shield;
     public GameObject p1Canvas;
     public GameObject p2Canvas;
     GameObject startLight;
     GameObject createdPickup;
+    float speed = 10f;
+    float turnPower = -85f;
+    public int playerNumber;
     public int checkpointsPassed = 0;
-    public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+    public int health = 100;
+    int collisionTimer = 0;
+    public bool hasBomb = false;
+    public bool hasShield = false;
+    public bool canMove = true;
     public bool hasPickup = false;
+    bool canCollide = true;
     Quaternion initialRotation;
     Quaternion tempRotation;
-    public int health = 100;
-
+    
     #endregion
 
     #region Start
@@ -153,6 +155,15 @@ public class Car_Controller : MonoBehaviour
                 #endregion
             }
         }
+
+        if(collisionTimer > 0)
+        {
+            collisionTimer--;
+        }
+        else
+        {
+            canCollide = true;
+        }
     }
 
     #endregion
@@ -175,9 +186,23 @@ public class Car_Controller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if((coll.gameObject.tag.Contains("Player")) || (coll.gameObject.tag.Contains("Racetrack")))
+        if(((coll.gameObject.tag.Contains("Player")) || (coll.gameObject.tag.Contains("Racetrack"))) && canCollide)
         {
             health -= 10;
+            collisionTimer = 60;
+            canCollide = false;
+
+            if (health <= 0)
+            {
+                Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+            }
+        }
+
+        if(coll.gameObject.tag == "Shield")
+        {
+            health -= 20;
+            collisionTimer = 60;
+            Destroy(coll.gameObject);
 
             if (health <= 0)
             {

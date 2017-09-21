@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114180697553932658}
   - component: {fileID: 50090442038597530}
   - component: {fileID: 70651992509186772}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shield_Animation_Close
   m_TagString: Shield
   m_Icon: {fileID: 0}
