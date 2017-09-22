@@ -19,7 +19,7 @@ public class Car_Controller : MonoBehaviour
     public int playerNumber;
     public int checkpointsPassed = 0;
     public int health = 100;
-    int collisionTimer = 0;
+    public int collisionTimer = 0;
     public bool hasBomb = false;
     public bool hasShield = false;
     public bool canMove = true;
@@ -180,6 +180,11 @@ public class Car_Controller : MonoBehaviour
         return transform.right * Vector2.Dot(rb.velocity, transform.right);
     }
 
+    public void LostGame()
+    {
+        Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+    }
+
     #endregion
 
     #region Collision Methods
@@ -191,18 +196,6 @@ public class Car_Controller : MonoBehaviour
             health -= 10;
             collisionTimer = 60;
             canCollide = false;
-
-            if (health <= 0)
-            {
-                Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
-            }
-        }
-
-        if(coll.gameObject.tag == "Shield")
-        {
-            health -= 20;
-            collisionTimer = 60;
-            Destroy(coll.gameObject);
 
             if (health <= 0)
             {
