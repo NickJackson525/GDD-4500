@@ -15,6 +15,8 @@ public class Game_Manager
     public GameObject player1;
     public GameObject player2;
     public GameObject[] texts;
+    public GameObject[] p1Health;
+    public GameObject[] p2Health;
 
     #endregion
 
@@ -61,6 +63,8 @@ public class Game_Manager
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         texts = GameObject.FindGameObjectsWithTag("Text");
+        p1Health = GameObject.FindGameObjectsWithTag("P1Health");
+        p2Health = GameObject.FindGameObjectsWithTag("P2Health");
 
         #endregion
 

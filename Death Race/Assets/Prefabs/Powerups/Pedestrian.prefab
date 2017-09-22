@@ -80,6 +80,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kittenIcon: {fileID: 1436825899082788, guid: d5584e4d7b8029749bb36071023e0115, type: 2}
   shieldIcon: {fileID: 1225853025088844, guid: aa965dda2bd4ecd40af71a1fac033ff9, type: 2}
+  harpoonIcon: {fileID: 1756045057177108, guid: 09ff53eae81cda24a81a74d918c83d74,
+    type: 2}
+  fakePedestrianIcon: {fileID: 1343001208856842, guid: b12b8ac560746cd40bde336f7ea7a4f7,
+    type: 2}
 --- !u!212 &212727456875768876
 SpriteRenderer:
   m_ObjectHideFlags: 1
