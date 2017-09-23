@@ -34,7 +34,7 @@ public class Pedestrian : MonoBehaviour
             if (!coll.gameObject.GetComponent<Car_Controller>().hasPickup)
             {
                 //only 50% chance to give pickup
-                if (Random.Range(0, pickupChance) == 0)
+                if (Random.Range(pickupChance, pickupChance) == pickupChance)
                 {
                     switch (Random.Range(0, 4))
                     {
