@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class Car_Controller : MonoBehaviour
+public class Car_Controller : NetworkBehaviour
 {
     #region Variables
 
@@ -49,6 +50,11 @@ public class Car_Controller : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (playerNumber == 1)
         {
             #region Player 1 Health
@@ -130,6 +136,11 @@ public class Car_Controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
         rb.velocity = getForewordVelocity(rb) + getSidewaysVelocity(rb) * driftPower;

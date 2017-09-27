@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 50206858753285014}
   - component: {fileID: 60175778841417330}
   - component: {fileID: 114291475595327084}
+  - component: {fileID: 114107613275424722}
+  - component: {fileID: 114565588061983906}
   m_Layer: 11
   m_Name: Car 1
   m_TagString: Player1
@@ -112,6 +114,38 @@ PolygonCollider2D:
       - {x: 0.39, y: -1.01}
       - {x: 0.47, y: -0.84}
       - {x: 0.48, y: -0.59}
+--- !u!114 &114107613275424722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040974732349330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 228
+    i2: 202
+    i3: 222
+    i4: 95
+    i5: 68
+    i6: 85
+    i7: 116
+    i8: 107
+    i9: 172
+    i10: 247
+    i11: 97
+    i12: 100
+    i13: 203
+    i14: 238
+    i15: 211
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114291475595327084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +174,27 @@ MonoBehaviour:
   hasShield: 0
   canMove: 1
   hasPickup: 0
+--- !u!114 &114565588061983906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040974732349330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!212 &212259609622620662
 SpriteRenderer:
   m_ObjectHideFlags: 1
