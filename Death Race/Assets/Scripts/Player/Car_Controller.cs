@@ -42,6 +42,19 @@ public class Car_Controller : NetworkBehaviour
     {
         startLight = GameObject.FindGameObjectWithTag("StartLight");
         initialRotation = transform.rotation;
+        p1Canvas = GameObject.FindGameObjectWithTag("p1Canvas");
+        p2Canvas = GameObject.FindGameObjectWithTag("p2Canvas");
+
+        if(GameObject.FindGameObjectWithTag("Player1"))
+        {
+            playerNumber = 2;
+            gameObject.tag = "Player2";
+        }
+        else
+        {
+            playerNumber = 1;
+            gameObject.tag = "Player1";
+        }
     }
 
     #endregion

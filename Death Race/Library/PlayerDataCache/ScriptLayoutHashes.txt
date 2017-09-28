@@ -114,7 +114,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 24118ea3f907a403910e9d1d4fd733dc Assembly-CSharp.dll:.Kitten_Cannon
 3f92bd28e672f0977721e64bd9b3fc7a Assembly-CSharp.dll:.Bomb_Explosion
-a893166a1d13e3237e6b6010d6d63a27 Assembly-CSharp.dll:.Camera_Follow
+85cf08c480fd27dff434edb21f1979df Assembly-CSharp.dll:.Camera_Follow
 d983a96d346663b93cb921be07e53611 Assembly-CSharp.dll:.Finishline
 bbe18291d06f8100428e2b77e6df4e4f Assembly-CSharp.dll:.Shield_Animation_Transition
 a893166a1d13e3237e6b6010d6d63a27 Assembly-CSharp.dll:.Pickup_Icon

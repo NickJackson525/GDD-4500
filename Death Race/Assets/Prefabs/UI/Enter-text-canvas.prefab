@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114583258087173852}
   m_Layer: 9
   m_Name: Enter-text-canvas
-  m_TagString: MainCamera
+  m_TagString: p2Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,7 +487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 186}
+  m_AnchoredPosition: {x: 4023, y: 1735}
   m_SizeDelta: {x: 34.05, y: 6.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224156310270732040
@@ -505,7 +505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.999512, y: 185.9591}
+  m_AnchoredPosition: {x: 4022.9993, y: 1734.9591}
   m_SizeDelta: {x: 34.582, y: 7.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224236232826580190
@@ -548,7 +548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.39678, y: 9.739567}
+  m_AnchoredPosition: {x: -46.77, y: 5}
   m_SizeDelta: {x: 512, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224798820889879222

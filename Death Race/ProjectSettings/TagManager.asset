@@ -18,6 +18,8 @@ TagManager:
   - Text
   - P1Health
   - P2Health
+  - p1Canvas
+  - p2Canvas
   layers:
   - Default
   - TransparentFX

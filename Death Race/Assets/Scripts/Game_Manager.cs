@@ -60,8 +60,6 @@ public class Game_Manager
         p2Lose = GameObject.FindGameObjectsWithTag("P1 Lose");
         p1Win = GameObject.FindGameObjectsWithTag("P2 Win");
         p1Lose = GameObject.FindGameObjectsWithTag("P2 Lose");
-        player1 = GameObject.FindGameObjectWithTag("Player1");
-        player2 = GameObject.FindGameObjectWithTag("Player2");
         texts = GameObject.FindGameObjectsWithTag("Text");
         p1Health = GameObject.FindGameObjectsWithTag("P1Health");
         p2Health = GameObject.FindGameObjectsWithTag("P2Health");
@@ -87,6 +85,9 @@ public class Game_Manager
     public void GameOver(GameObject thisCar, bool isWinner, GameObject p1Canvas, GameObject p2Canvas)
     {
         #region Show Winner
+
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
 
         player1.GetComponent<Car_Controller>().canMove = false;
         player1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

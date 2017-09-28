@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114646995150057130}
   m_Layer: 8
   m_Name: Space-text-canvas
-  m_TagString: MainCamera
+  m_TagString: p1Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4.705538, y: 22.895071}
+  m_AnchoredPosition: {x: -43.57, y: 5}
   m_SizeDelta: {x: 512, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224204264320727334
@@ -494,7 +494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3627.2, y: 1752.1}
+  m_AnchoredPosition: {x: 3869.0002, y: 1752.1}
   m_SizeDelta: {x: 34.05, y: 6.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224418931736852150
@@ -548,7 +548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3627.1997, y: 1752.0591}
+  m_AnchoredPosition: {x: 3869, y: 1752.0591}
   m_SizeDelta: {x: 34.582, y: 7.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224529569265803994

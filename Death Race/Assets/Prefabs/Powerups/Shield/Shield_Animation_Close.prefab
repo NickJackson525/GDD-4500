@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114180697553932658}
   - component: {fileID: 50090442038597530}
   - component: {fileID: 70651992509186772}
+  - component: {fileID: 114114544889253720}
+  - component: {fileID: 114033203779933664}
   m_Layer: 12
   m_Name: Shield_Animation_Close
   m_TagString: Shield
@@ -96,6 +98,59 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114033203779933664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253630639329386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114114544889253720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253630639329386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 240
+    i1: 152
+    i2: 167
+    i3: 24
+    i4: 47
+    i5: 110
+    i6: 91
+    i7: 148
+    i8: 8
+    i9: 189
+    i10: 46
+    i11: 242
+    i12: 240
+    i13: 228
+    i14: 131
+    i15: 98
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114180697553932658
 MonoBehaviour:
   m_ObjectHideFlags: 1

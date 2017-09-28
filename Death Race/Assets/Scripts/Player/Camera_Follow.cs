@@ -11,7 +11,7 @@ public class Camera_Follow : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        if(playerNumToFollow == 0)
+        if(playerNumToFollow == 1)
         {
             followTarget = GameObject.FindGameObjectWithTag("Player1");
         }
@@ -24,16 +24,18 @@ public class Camera_Follow : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (playerNumToFollow == 0)
+        if (followTarget == null)
         {
-            followTarget = GameObject.FindGameObjectWithTag("Player1");
+            if (playerNumToFollow == 1)
+            {
+                followTarget = GameObject.FindGameObjectWithTag("Player1");
+            }
+            else
+            {
+                followTarget = GameObject.FindGameObjectWithTag("Player2");
+            }
         }
         else
-        {
-            followTarget = GameObject.FindGameObjectWithTag("Player2");
-        }
-
-        if (followTarget != null)
         {
             transform.position = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, cameraZDistance);
         }

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114565588061983906}
   m_Layer: 11
   m_Name: Car 1
-  m_TagString: Player1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
