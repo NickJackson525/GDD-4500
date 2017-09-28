@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Pedestrian : MonoBehaviour
+public class Pedestrian : NetworkBehaviour
 {
     #region Variables
+
+    [SyncVar]
+    GameObject createdInstance;
 
     public GameObject kittenIcon;
     public GameObject shieldIcon;
     public GameObject harpoonIcon;
     public GameObject fakePedestrianIcon;
-    GameObject createdInstance;
     int pickupChance = 2;
 
     #endregion

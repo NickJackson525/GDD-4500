@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Harpoon : MonoBehaviour
+public class Harpoon : NetworkBehaviour
 {
     public GameObject playerStart;
     GameObject playerToPush;

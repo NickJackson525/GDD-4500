@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Shield_Animation_Create : MonoBehaviour
+public class Shield_Animation_Create : NetworkBehaviour
 {
     #region Variables
 

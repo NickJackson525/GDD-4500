@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kitten_Cannon : MonoBehaviour
+public class Kitten_Cannon : NetworkBehaviour
 {
     public GameObject kittenFollow;
     GameObject temp;

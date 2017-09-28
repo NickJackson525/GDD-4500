@@ -9,7 +9,9 @@ public class Car_Controller : NetworkBehaviour
 {
     #region Variables
 
+    [SyncVar]
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+
     public GameObject kittenCannon;
     public GameObject shield;
     public GameObject fakePedestrian;
@@ -32,7 +34,8 @@ public class Car_Controller : NetworkBehaviour
     bool canCollide = true;
     Quaternion initialRotation;
     Quaternion tempRotation;
-    
+    Rigidbody2D rb;
+
     #endregion
 
     #region Start
@@ -44,8 +47,9 @@ public class Car_Controller : NetworkBehaviour
         initialRotation = transform.rotation;
         p1Canvas = GameObject.FindGameObjectWithTag("p1Canvas");
         p2Canvas = GameObject.FindGameObjectWithTag("p2Canvas");
+        rb = GetComponent<Rigidbody2D>();
 
-        if(GameObject.FindGameObjectWithTag("Player1"))
+        if (GameObject.FindGameObjectWithTag("Player1"))
         {
             playerNumber = 2;
             gameObject.tag = "Player2";
@@ -154,8 +158,6 @@ public class Car_Controller : NetworkBehaviour
             return;
         }
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
         rb.velocity = getForewordVelocity(rb) + getSidewaysVelocity(rb) * driftPower;
 
         if ((startLight.activeSelf == false) && canMove)
@@ -186,39 +188,7 @@ public class Car_Controller : NetworkBehaviour
 
                 if (hasPickup && Input.GetKeyUp(KeyCode.Space))
                 {
-                    switch(currentPickup)
-                    {
-                        case Game_Manager.Pickup.FAKE_PEDESTRIAN:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            createdPickup = Instantiate(fakePedestrian, new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z), transform.rotation);
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.HARPOON:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            createdPickup = Instantiate(harpoon, new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), transform.rotation, transform);
-                            createdPickup.GetComponent<Harpoon>().playerStart = this.gameObject;
-                            createdPickup.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.KITTEN_CANNON:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.SHIELD:
-                            createdPickup = Instantiate(shield, new Vector3(transform.position.x, transform.position.y - 1.63f, transform.position.z), transform.rotation, transform);
-                            createdPickup.GetComponent<Shield_Animation_Create>().carToFollow = this.gameObject;
-                            hasPickup = false;
-                            break;
-                        default:
-                            break;
-                    }
+                    CmdUsePickup();
                 }
 
                 #endregion
@@ -249,39 +219,7 @@ public class Car_Controller : NetworkBehaviour
 
                 if (hasPickup && Input.GetKeyUp(KeyCode.KeypadEnter))
                 {
-                    switch (currentPickup)
-                    {
-                        case Game_Manager.Pickup.FAKE_PEDESTRIAN:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            Instantiate(fakePedestrian, new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z), transform.rotation);
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.HARPOON:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            createdPickup = Instantiate(harpoon, new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), transform.rotation, transform);
-                            createdPickup.GetComponent<Harpoon>().playerStart = this.gameObject;
-                            createdPickup.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.KITTEN_CANNON:
-                            tempRotation = transform.rotation;
-                            transform.rotation = initialRotation;
-                            Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
-                            transform.rotation = tempRotation;
-                            hasPickup = false;
-                            break;
-                        case Game_Manager.Pickup.SHIELD:
-                            createdPickup = Instantiate(shield, new Vector3(transform.position.x, transform.position.y - 1.63f, transform.position.z), transform.rotation, transform);
-                            createdPickup.GetComponent<Shield_Animation_Create>().carToFollow = this.gameObject;
-                            hasPickup = false;
-                            break;
-                        default:
-                            break;
-                    }
+                    CmdUsePickup();
                 }
 
                 #endregion
@@ -315,6 +253,43 @@ public class Car_Controller : NetworkBehaviour
     public void LostGame()
     {
         Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+    }
+
+    [Command]
+    void CmdUsePickup()
+    {
+        switch (currentPickup)
+        {
+            case Game_Manager.Pickup.FAKE_PEDESTRIAN:
+                tempRotation = transform.rotation;
+                transform.rotation = initialRotation;
+                createdPickup = Instantiate(fakePedestrian, new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z), transform.rotation);
+                transform.rotation = tempRotation;
+                break;
+            case Game_Manager.Pickup.HARPOON:
+                tempRotation = transform.rotation;
+                transform.rotation = initialRotation;
+                createdPickup = Instantiate(harpoon, new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), transform.rotation, transform);
+                createdPickup.GetComponent<Harpoon>().playerStart = this.gameObject;
+                createdPickup.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+                transform.rotation = tempRotation;
+                break;
+            case Game_Manager.Pickup.KITTEN_CANNON:
+                tempRotation = transform.rotation;
+                transform.rotation = initialRotation;
+                Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
+                transform.rotation = tempRotation;
+                break;
+            case Game_Manager.Pickup.SHIELD:
+                createdPickup = Instantiate(shield, new Vector3(transform.position.x, transform.position.y - 1.63f, transform.position.z), transform.rotation, transform);
+                createdPickup.GetComponent<Shield_Animation_Create>().carToFollow = this.gameObject;
+                break;
+            default:
+                break;
+        }
+
+        hasPickup = false;
+        NetworkServer.Spawn(createdPickup);
     }
 
     #endregion
