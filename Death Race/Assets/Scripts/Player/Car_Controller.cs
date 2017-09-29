@@ -11,7 +11,13 @@ public class Car_Controller : NetworkBehaviour
 
     [SyncVar]
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+    //[SyncVar]
+    public bool hasPickup = false;
+    //[SyncVar]
+    public int health = 100;
 
+    GameObject createdPickup;
+    public int playerNumber;
     public GameObject kittenCannon;
     public GameObject shield;
     public GameObject fakePedestrian;
@@ -19,18 +25,14 @@ public class Car_Controller : NetworkBehaviour
     public GameObject p1Canvas;
     public GameObject p2Canvas;
     GameObject startLight;
-    GameObject createdPickup;
     float speed = 17f;
     float turnPower = -110f;
     float driftPower = 0.95f;
-    public int playerNumber;
     public int checkpointsPassed = 0;
-    public int health = 100;
     public int collisionTimer = 0;
     public bool hasBomb = false;
     public bool hasShield = false;
     public bool canMove = true;
-    public bool hasPickup = false;
     bool canCollide = true;
     Quaternion initialRotation;
     Quaternion tempRotation;
@@ -277,7 +279,7 @@ public class Car_Controller : NetworkBehaviour
             case Game_Manager.Pickup.KITTEN_CANNON:
                 tempRotation = transform.rotation;
                 transform.rotation = initialRotation;
-                Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
+                createdPickup = Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
                 transform.rotation = tempRotation;
                 break;
             case Game_Manager.Pickup.SHIELD:

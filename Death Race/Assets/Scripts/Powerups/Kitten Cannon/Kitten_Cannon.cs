@@ -5,21 +5,32 @@ using UnityEngine.Networking;
 
 public class Kitten_Cannon : NetworkBehaviour
 {
+    #region Variables
+
     public GameObject kittenFollow;
     GameObject temp;
     public Vector3 directionToFire;
     public Rigidbody2D rb;
     public float speed = 12f;
     int timer = 100;
+    Collider2D collObject;
 
-	// Use this for initialization
-	void Start ()
+    #endregion
+
+    #region Start
+
+    // Use this for initialization
+    void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    #endregion
+
+    #region Update
+
+    // Update is called once per frame
+    void Update ()
     {
         timer--;
 
@@ -31,22 +42,42 @@ public class Kitten_Cannon : NetworkBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
+    #endregion
+
+    #region Custom Methods
+
+    [Command]
+    void CmdNextState()
     {
-        if(coll.gameObject.tag.Contains("Player1"))
+        temp = Instantiate(kittenFollow);
+        temp.GetComponent<Kitten_Follow>().followTarget = collObject.gameObject;
+
+        if (collObject.gameObject.tag.Contains("Player1"))
         {
-            temp = Instantiate(kittenFollow);
-            temp.GetComponent<Kitten_Follow>().followTarget = coll.gameObject;
             temp.gameObject.layer = 8;
-            Destroy(this.gameObject);
+        }
+        else if (collObject.gameObject.tag.Contains("Player2"))
+        {
+            temp.gameObject.layer = 9;
         }
 
-        if (coll.gameObject.tag.Contains("Player2"))
+        NetworkServer.Spawn(temp);
+        Destroy(this.gameObject);
+    }
+
+    #endregion
+
+    #region Collision Methods
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        collObject = coll;
+
+        if (coll.tag.Contains("Player"))
         {
-            temp = Instantiate(kittenFollow);
-            temp.GetComponent<Kitten_Follow>().followTarget = coll.gameObject;
-            temp.gameObject.layer = 9;
-            Destroy(this.gameObject);
+            CmdNextState();
         }
     }
+
+    #endregion
 }

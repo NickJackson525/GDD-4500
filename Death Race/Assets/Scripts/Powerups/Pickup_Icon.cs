@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 public class Pickup_Icon : NetworkBehaviour
 {
+    [SyncVar]
     public GameObject followTarget;
 
     // Use this for initialization

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212598683876050554}
   - component: {fileID: 114584523111939002}
   - component: {fileID: 114854459312751336}
-  - component: {fileID: 114666568798300414}
   m_Layer: 0
   m_Name: KittenIcon
   m_TagString: Untagged
@@ -55,27 +54,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
---- !u!114 &114666568798300414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1436825899082788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114854459312751336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +85,7 @@ MonoBehaviour:
     i14: 1
     i15: 21
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!212 &212598683876050554
 SpriteRenderer:
   m_ObjectHideFlags: 1

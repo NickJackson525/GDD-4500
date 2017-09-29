@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Harpoon : NetworkBehaviour
+public class Harpoon : MonoBehaviour
 {
     public GameObject playerStart;
     GameObject playerToPush;

@@ -8,6 +8,8 @@ public class Shield_Animation_Close : NetworkBehaviour
     #region Variables
 
     string currentSprite;
+
+    [SyncVar]
     public GameObject carToFollow;
 
     #endregion

@@ -8,7 +8,10 @@ public class Shield_Animation_Transition : NetworkBehaviour
     #region Variables
 
     public GameObject Shield_Close;
+
+    [SyncVar]
     public GameObject carToFollow;
+
     GameObject createdShield;
 
     #endregion
@@ -44,29 +47,39 @@ public class Shield_Animation_Transition : NetworkBehaviour
 
     #endregion
 
+    #region Custom Methods
+
+    [Command]
+    void CmdNextState()
+    {
+        createdShield = Instantiate(Shield_Close, transform.position, transform.rotation);
+        createdShield.GetComponent<Shield_Animation_Close>().carToFollow = this.carToFollow;
+        NetworkServer.Spawn(createdShield);
+        Destroy(this.gameObject);
+    }
+
+    #endregion
+
     #region Collision Methods
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag.Contains("Racetrack") || coll.gameObject.tag.Contains("Powerup"))
         {
-            createdShield = Instantiate(Shield_Close, transform.position, transform.rotation);
-            createdShield.GetComponent<Shield_Animation_Close>().carToFollow = this.carToFollow;
-            Destroy(this.gameObject);
+            CmdNextState();
         }
 
         if (coll.gameObject.tag.Contains("Player") && (coll.gameObject.tag != carToFollow.tag))
         {
             coll.gameObject.GetComponent<Car_Controller>().health -= 20;
             coll.gameObject.GetComponent<Car_Controller>().collisionTimer = 60;
-            createdShield = Instantiate(Shield_Close, transform.position, transform.rotation);
-            createdShield.GetComponent<Shield_Animation_Close>().carToFollow = this.carToFollow;
-            Destroy(this.gameObject);
 
             if (coll.gameObject.GetComponent<Car_Controller>().health <= 0)
             {
                 coll.gameObject.GetComponent<Car_Controller>().LostGame();
             }
+
+            CmdNextState();
         }
     }
 

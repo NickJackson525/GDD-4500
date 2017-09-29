@@ -742,6 +742,15 @@ Prefab:
       propertyPath: playerNumToFollow
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20069939549160740, guid: 745f93fd8ccd79a4da90f604770a3302,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392419512614962, guid: 745f93fd8ccd79a4da90f604770a3302, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 745f93fd8ccd79a4da90f604770a3302, type: 2}
   m_IsPrefabParent: 0
@@ -1308,7 +1317,7 @@ Prefab:
     - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 6
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4181531105072460, guid: e71e3a6af937da647a43321b3e210761, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1397,6 +1406,36 @@ Prefab:
       propertyPath: m_SpawnPrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 1253630639329386, guid: f098a7182f6e5b9408bd2ef2f0e48362,
+        type: 2}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1135145023281674, guid: 44167e47a26e5f74192e6c3a48a32524,
+        type: 2}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 1343001208856842, guid: b12b8ac560746cd40bde336f7ea7a4f7,
+        type: 2}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 1756045057177108, guid: 09ff53eae81cda24a81a74d918c83d74,
+        type: 2}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 1436825899082788, guid: d5584e4d7b8029749bb36071023e0115,
+        type: 2}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 1225853025088844, guid: aa965dda2bd4ecd40af71a1fac033ff9,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e71e3a6af937da647a43321b3e210761, type: 2}
@@ -2779,6 +2818,16 @@ Prefab:
         type: 2}
       propertyPath: playerNumToFollow
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 20576154685333062, guid: 5c3c65a36d259f44dbc02b868211c927,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 20576154685333062, guid: 5c3c65a36d259f44dbc02b868211c927,
+        type: 2}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c3c65a36d259f44dbc02b868211c927, type: 2}

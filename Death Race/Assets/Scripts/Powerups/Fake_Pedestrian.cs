@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Fake_Pedestrian : NetworkBehaviour
+public class Fake_Pedestrian : MonoBehaviour
 {
     GameObject playerStart;
 

@@ -7,7 +7,7 @@ public class Pedestrian : NetworkBehaviour
 {
     #region Variables
 
-    [SyncVar]
+    //[SyncVar]
     GameObject createdInstance;
 
     public GameObject kittenIcon;
@@ -74,6 +74,8 @@ public class Pedestrian : NetworkBehaviour
                     {
                         createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 9;
                     }
+
+                    NetworkServer.Spawn(createdInstance);
                 }
 
                 Destroy(this.gameObject);
