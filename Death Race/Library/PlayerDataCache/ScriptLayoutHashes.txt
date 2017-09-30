@@ -112,7 +112,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
-24118ea3f907a403910e9d1d4fd733dc Assembly-CSharp.dll:.Kitten_Cannon
+35cef7da755753e6e36546cdf5b44e54 Assembly-CSharp.dll:.Kitten_Cannon
 3f92bd28e672f0977721e64bd9b3fc7a Assembly-CSharp.dll:.Bomb_Explosion
 85cf08c480fd27dff434edb21f1979df Assembly-CSharp.dll:.Camera_Follow
 d983a96d346663b93cb921be07e53611 Assembly-CSharp.dll:.Finishline
@@ -146,5 +146,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 663576a56d2d11d2ef0a59afa898a2ab Assembly-CSharp.dll:.Shield_Pickup
 95ec1ec0162966bd2d721f30f4a6c508 Assembly-CSharp.dll:.Fire_Timer
 cc7172fb322da0fc5eaba5e7b52db3bf Assembly-CSharp.dll:.Start_Countdown
-b876a9cd14b4802af9fd0bee064db8aa Assembly-CSharp.dll:.Car_Controller
+e827303c44ddd5d5b4c592909ad9513b Assembly-CSharp.dll:.Car_Controller
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Fake_Pedestrian

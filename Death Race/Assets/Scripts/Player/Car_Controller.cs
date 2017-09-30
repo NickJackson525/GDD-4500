@@ -37,6 +37,8 @@ public class Car_Controller : NetworkBehaviour
     Quaternion initialRotation;
     Quaternion tempRotation;
     Rigidbody2D rb;
+    public Text debug;
+    Camera mainCamera;
 
     #endregion
 
@@ -50,16 +52,20 @@ public class Car_Controller : NetworkBehaviour
         p1Canvas = GameObject.FindGameObjectWithTag("p1Canvas");
         p2Canvas = GameObject.FindGameObjectWithTag("p2Canvas");
         rb = GetComponent<Rigidbody2D>();
+        debug = GameObject.Find("DebugText").GetComponent<Text>();
+        mainCamera = GameObject.FindObjectOfType<Camera>();
 
         if (GameObject.FindGameObjectWithTag("Player1"))
         {
             playerNumber = 2;
             gameObject.tag = "Player2";
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
         }
         else
         {
             playerNumber = 1;
             gameObject.tag = "Player1";
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
         }
     }
 
@@ -280,6 +286,7 @@ public class Car_Controller : NetworkBehaviour
                 tempRotation = transform.rotation;
                 transform.rotation = initialRotation;
                 createdPickup = Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
+                createdPickup.GetComponent<Kitten_Cannon>().thisPlayer = this.gameObject;
                 transform.rotation = tempRotation;
                 break;
             case Game_Manager.Pickup.SHIELD:

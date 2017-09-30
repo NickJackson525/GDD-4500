@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Kitten_Follow : MonoBehaviour
+public class Kitten_Follow : NetworkBehaviour
 {
-    enum SwerveDirection { LEFT, RIGHT }
+    [SyncVar]
     public GameObject followTarget;
+
+    enum SwerveDirection { LEFT, RIGHT }
     int sequenceCount = 0;
     int sequenceGoal = 4;
     SwerveDirection nextDirection = SwerveDirection.LEFT;

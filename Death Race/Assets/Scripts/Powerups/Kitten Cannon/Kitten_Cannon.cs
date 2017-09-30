@@ -7,13 +7,14 @@ public class Kitten_Cannon : NetworkBehaviour
 {
     #region Variables
 
-    public GameObject kittenFollow;
+    public GameObject kittenFollowPrefab;
     GameObject temp;
-    public Vector3 directionToFire;
+    //public Vector3 directionToFire;
     public Rigidbody2D rb;
     public float speed = 12f;
     int timer = 100;
     Collider2D collObject;
+    public GameObject thisPlayer;
 
     #endregion
 
@@ -49,7 +50,7 @@ public class Kitten_Cannon : NetworkBehaviour
     [Command]
     void CmdNextState()
     {
-        temp = Instantiate(kittenFollow);
+        temp = Instantiate(kittenFollowPrefab);
         temp.GetComponent<Kitten_Follow>().followTarget = collObject.gameObject;
 
         if (collObject.gameObject.tag.Contains("Player1"))
@@ -62,7 +63,7 @@ public class Kitten_Cannon : NetworkBehaviour
         }
 
         NetworkServer.Spawn(temp);
-        Destroy(this.gameObject);
+        NetworkServer.Destroy(this.gameObject);
     }
 
     #endregion
@@ -71,11 +72,16 @@ public class Kitten_Cannon : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        collObject = coll;
-
-        if (coll.tag.Contains("Player"))
+        Debug.Log("Collison");
+        if (coll.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
-            CmdNextState();
+            Debug.Log("local player");
+            collObject = coll;
+
+            if (coll.tag.Contains("Player"))
+            {
+                CmdNextState();
+            }
         }
     }
 

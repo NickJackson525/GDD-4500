@@ -745,7 +745,7 @@ Prefab:
     - target: {fileID: 20069939549160740, guid: 745f93fd8ccd79a4da90f604770a3302,
         type: 2}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1392419512614962, guid: 745f93fd8ccd79a4da90f604770a3302, type: 2}
       propertyPath: m_IsActive
@@ -2212,6 +2212,31 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1094711864}
+    - target: {fileID: 114942597577174032, guid: b7e3c89fc677c3240ae42435efc96f08,
+        type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224765400946594588, guid: b7e3c89fc677c3240ae42435efc96f08,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -266.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224765400946594588, guid: b7e3c89fc677c3240ae42435efc96f08,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -106.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 223711996779986094, guid: b7e3c89fc677c3240ae42435efc96f08,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224765400946594588, guid: b7e3c89fc677c3240ae42435efc96f08,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3445
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7e3c89fc677c3240ae42435efc96f08, type: 2}
   m_IsPrefabParent: 0
@@ -2436,6 +2461,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1558714782361438, guid: 7ecf89dcedd58d24abc59682331888d4, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223189500826183472, guid: 7ecf89dcedd58d24abc59682331888d4,
+        type: 2}
+      propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2828,6 +2858,10 @@ Prefab:
         type: 2}
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858310760846584, guid: 5c3c65a36d259f44dbc02b868211c927, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c3c65a36d259f44dbc02b868211c927, type: 2}
