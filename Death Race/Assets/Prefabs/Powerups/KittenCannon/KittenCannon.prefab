@@ -122,11 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c040075215c1db4abf7e04f934f5fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kittenFollow: {fileID: 1135145023281674, guid: 44167e47a26e5f74192e6c3a48a32524,
-    type: 2}
-  directionToFire: {x: 0, y: 0, z: 0}
+  kittenFollowPrefab: {fileID: 0}
   rb: {fileID: 0}
   speed: 12
+  playerStart: {fileID: 0}
 --- !u!114 &114989269946742220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +157,7 @@ MonoBehaviour:
     i14: 61
     i15: 231
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!212 &212867577235545154
 SpriteRenderer:
   m_ObjectHideFlags: 1

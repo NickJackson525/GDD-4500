@@ -13,8 +13,10 @@ public class Kitten_Cannon : NetworkBehaviour
     public Rigidbody2D rb;
     public float speed = 12f;
     int timer = 100;
-    Collider2D collObject;
-    public GameObject thisPlayer;
+    //[SyncVar]
+    //public GameObject collObject;
+    [SyncVar]
+    public GameObject playerStart;
 
     #endregion
 
@@ -47,24 +49,24 @@ public class Kitten_Cannon : NetworkBehaviour
 
     #region Custom Methods
 
-    [Command]
-    void CmdNextState()
-    {
-        temp = Instantiate(kittenFollowPrefab);
-        temp.GetComponent<Kitten_Follow>().followTarget = collObject.gameObject;
+    //[Command]
+    //void CmdNextState()
+    //{
+    //    temp = Instantiate(kittenFollowPrefab);
+    //    temp.GetComponent<Kitten_Follow>().followTarget = collObject;
 
-        if (collObject.gameObject.tag.Contains("Player1"))
-        {
-            temp.gameObject.layer = 8;
-        }
-        else if (collObject.gameObject.tag.Contains("Player2"))
-        {
-            temp.gameObject.layer = 9;
-        }
+    //    if (collObject.tag.Contains("Player1"))
+    //    {
+    //        temp.gameObject.layer = 8;
+    //    }
+    //    else if (collObject.tag.Contains("Player2"))
+    //    {
+    //        temp.gameObject.layer = 9;
+    //    }
 
-        NetworkServer.Spawn(temp);
-        NetworkServer.Destroy(this.gameObject);
-    }
+    //    NetworkServer.Spawn(temp);
+    //    NetworkServer.Destroy(this.gameObject);
+    //}
 
     #endregion
 
@@ -72,16 +74,13 @@ public class Kitten_Cannon : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        Debug.Log("Collison");
-        if (coll.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        if ((coll.gameObject.tag.Contains("Player")) && (coll.gameObject.tag != playerStart.tag))
         {
-            Debug.Log("local player");
-            collObject = coll;
+            //collObject = coll.gameObject;
+            //CmdNextState();
 
-            if (coll.tag.Contains("Player"))
-            {
-                CmdNextState();
-            }
+            coll.GetComponent<Car_Controller>().CmdCreateKittenFollow();
+            Destroy(this.gameObject);
         }
     }
 

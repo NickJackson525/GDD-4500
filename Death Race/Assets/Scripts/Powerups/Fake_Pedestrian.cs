@@ -5,8 +5,6 @@ using UnityEngine.Networking;
 
 public class Fake_Pedestrian : NetworkBehaviour
 {
-    GameObject playerStart;
-
 	// Use this for initialization
 	void Start ()
     {

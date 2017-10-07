@@ -5,7 +5,9 @@ using UnityEngine.Networking;
 
 public class Harpoon : NetworkBehaviour
 {
+    [SyncVar]
     public GameObject playerStart;
+    [SyncVar]
     GameObject playerToPush;
     public Rigidbody2D rb;
     public float speed = 12f;
@@ -29,12 +31,10 @@ public class Harpoon : NetworkBehaviour
             }
             else
             {
-                playerToPush.GetComponent<Rigidbody2D>().freezeRotation = false;
                 Destroy(this.gameObject);
             }
 
             playerToPush.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-            playerToPush.GetComponent<Rigidbody2D>().freezeRotation = true;
         }
 
         rb.freezeRotation = true;
@@ -47,16 +47,11 @@ public class Harpoon : NetworkBehaviour
         {
             playerToPush = coll.gameObject;
             hitPlayer = true;
-            timer = 90;
+            timer = 60;
         }
 
         if (coll.tag.Contains("Racetrack"))
         {
-            if(playerToPush != null)
-            {
-                playerToPush.GetComponent<Rigidbody2D>().freezeRotation = false;
-            }
-
             Destroy(this.gameObject);
         }
     }

@@ -11,20 +11,22 @@ public class Car_Controller : NetworkBehaviour
 
     [SyncVar]
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
-    //[SyncVar]
+    [SyncVar]
     public bool hasPickup = false;
-    //[SyncVar]
+    [SyncVar]
     public int health = 100;
 
     GameObject createdPickup;
     public int playerNumber;
     public GameObject kittenCannon;
+    public GameObject kittenFollowPrefab;
     public GameObject shield;
     public GameObject fakePedestrian;
     public GameObject harpoon;
     public GameObject p1Canvas;
     public GameObject p2Canvas;
     GameObject startLight;
+    GameObject temp;
     float speed = 17f;
     float turnPower = -110f;
     float driftPower = 0.95f;
@@ -286,7 +288,7 @@ public class Car_Controller : NetworkBehaviour
                 tempRotation = transform.rotation;
                 transform.rotation = initialRotation;
                 createdPickup = Instantiate(kittenCannon, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), transform.rotation, transform);
-                createdPickup.GetComponent<Kitten_Cannon>().thisPlayer = this.gameObject;
+                createdPickup.GetComponent<Kitten_Cannon>().playerStart = this.gameObject;
                 transform.rotation = tempRotation;
                 break;
             case Game_Manager.Pickup.SHIELD:
@@ -299,6 +301,24 @@ public class Car_Controller : NetworkBehaviour
 
         hasPickup = false;
         NetworkServer.Spawn(createdPickup);
+    }
+
+    [Command]
+    public void CmdCreateKittenFollow()
+    {
+        temp = Instantiate(kittenFollowPrefab);
+        temp.GetComponent<Kitten_Follow>().followTarget = gameObject;
+
+        if (gameObject.tag.Contains("Player1"))
+        {
+            temp.gameObject.layer = 8;
+        }
+        else if (gameObject.tag.Contains("Player2"))
+        {
+            temp.gameObject.layer = 9;
+        }
+
+        NetworkServer.Spawn(temp);
     }
 
     #endregion
