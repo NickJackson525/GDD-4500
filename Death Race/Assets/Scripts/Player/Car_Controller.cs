@@ -46,6 +46,26 @@ public class Car_Controller : NetworkBehaviour
 
     #region Start
 
+    public override void OnStartLocalPlayer()
+    {
+        mainCamera = GameObject.FindObjectOfType<Camera>();
+
+        if (GameObject.FindGameObjectWithTag("Player1"))
+        {
+            playerNumber = 2;
+            gameObject.tag = "Player2";
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 2");
+        }
+        else
+        {
+            playerNumber = 1;
+            gameObject.tag = "Player1";
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 1");
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -62,12 +82,14 @@ public class Car_Controller : NetworkBehaviour
             playerNumber = 2;
             gameObject.tag = "Player2";
             mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 2");
         }
         else
         {
             playerNumber = 1;
             gameObject.tag = "Player1";
             mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 1");
         }
     }
 
