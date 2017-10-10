@@ -17,7 +17,7 @@ public class Car_Controller : NetworkBehaviour
     public int health = 100;
 
     GameObject createdPickup;
-    public int playerNumber;
+    public int playerNumber = 0;
     public GameObject kittenCannon;
     public GameObject kittenFollowPrefab;
     public GameObject shield;
@@ -46,29 +46,21 @@ public class Car_Controller : NetworkBehaviour
 
     #region Start
 
-    public override void OnStartLocalPlayer()
-    {
-        mainCamera = GameObject.FindObjectOfType<Camera>();
+    //public override void OnStartLocalPlayer()
+    //{
+    //    mainCamera = GameObject.FindObjectOfType<Camera>();
 
-        if (GameObject.FindGameObjectWithTag("Player1"))
-        {
-            playerNumber = 2;
-            gameObject.tag = "Player2";
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 2");
-        }
-        else
-        {
-            playerNumber = 1;
-            gameObject.tag = "Player1";
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 1");
-        }
-    }
+    //    CmdIncreasePlayerCount();
+    //}
 
     // Use this for initialization
     void Start()
     {
+        if(!localPlayerAuthority)
+        {
+            return;
+        }
+
         startLight = GameObject.FindGameObjectWithTag("StartLight");
         initialRotation = transform.rotation;
         p1Canvas = GameObject.FindGameObjectWithTag("p1Canvas");
@@ -76,21 +68,24 @@ public class Car_Controller : NetworkBehaviour
         rb = GetComponent<Rigidbody2D>();
         debug = GameObject.Find("DebugText").GetComponent<Text>();
         mainCamera = GameObject.FindObjectOfType<Camera>();
+        mainCamera = GameObject.FindObjectOfType<Camera>();
 
-        if (GameObject.FindGameObjectWithTag("Player1"))
-        {
-            playerNumber = 2;
-            gameObject.tag = "Player2";
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 2");
-        }
-        else
-        {
-            playerNumber = 1;
-            gameObject.tag = "Player1";
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 1");
-        }
+        CmdIncreasePlayerCount();
+
+        //if (GameObject.FindGameObjectWithTag("Player1"))
+        //{
+        //    playerNumber = 2;
+        //    gameObject.tag = "Player2";
+        //    mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 2;
+        //    mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 2");
+        //}
+        //else
+        //{
+        //    playerNumber = 1;
+        //    gameObject.tag = "Player1";
+        //    mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = 1;
+        //    mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player 1");
+        //}
     }
 
     #endregion
@@ -290,6 +285,11 @@ public class Car_Controller : NetworkBehaviour
     [Command]
     void CmdUsePickup()
     {
+        if (!localPlayerAuthority)
+        {
+            return;
+        }
+
         switch (currentPickup)
         {
             case Game_Manager.Pickup.FAKE_PEDESTRIAN:
@@ -328,6 +328,11 @@ public class Car_Controller : NetworkBehaviour
     [Command]
     public void CmdCreateKittenFollow()
     {
+        if (!localPlayerAuthority)
+        {
+            return;
+        }
+
         temp = Instantiate(kittenFollowPrefab);
         temp.GetComponent<Kitten_Follow>().followTarget = gameObject;
 
@@ -341,6 +346,34 @@ public class Car_Controller : NetworkBehaviour
         }
 
         NetworkServer.Spawn(temp);
+    }
+
+    [Command]
+    public void CmdIncreasePlayerCount()
+    {
+        if(!localPlayerAuthority)
+        {
+            return;
+        }
+
+        if (Game_Manager.Instance.playerNumber > 1)
+        {
+            gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
+            Game_Manager.Instance.player2 = gameObject;
+            playerNumber = Game_Manager.Instance.playerNumber;
+        }
+        else
+        {
+            gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
+            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
+            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
+            Game_Manager.Instance.player1 = gameObject;
+            playerNumber = Game_Manager.Instance.playerNumber;
+        }
+
+        Game_Manager.Instance.playerNumber++;
     }
 
     #endregion

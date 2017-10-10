@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Networking;
 
 public class Game_Manager
 {
     #region Variables
 
+    [SyncVar]
+    public GameObject player1;
+    [SyncVar]
+    public GameObject player2;
+    [SyncVar]
+    public int playerNumber = 1;
+    
     public enum Pickup { FAKE_PEDESTRIAN, KITTEN_CANNON, HARPOON, SHIELD }
     public GameObject[] p2Win;
     public GameObject[] p2Lose;
     public GameObject[] p1Win;
     public GameObject[] p1Lose;
-    public GameObject player1;
-    public GameObject player2;
     public GameObject[] texts;
     public GameObject[] p1Health;
     public GameObject[] p2Health;
@@ -157,6 +163,12 @@ public class Game_Manager
             #endregion
         }
     }
+
+    //public void AddCar(GameObject carToAdd)
+    //{
+    //    Cars.Add(carToAdd);
+    //    playerNumber++;
+    //}
 
     #endregion
 }
