@@ -6,7 +6,6 @@ TagManager:
   tags:
   - BombPickup
   - Player1
-  - Player2
   - StartLight
   - Shield
   - Checkpoint

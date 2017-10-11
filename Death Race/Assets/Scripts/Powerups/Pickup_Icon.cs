@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class Pickup_Icon : NetworkBehaviour
+public class Pickup_Icon : MonoBehaviour
 {
-    [SyncVar]
     public GameObject followTarget;
 
     // Use this for initialization

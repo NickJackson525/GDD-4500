@@ -5,18 +5,17 @@ using UnityEngine;
 public class Finishline : MonoBehaviour
 {
     GameObject[] allCheckpoints;
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject p1Canvas;
-    public GameObject p2Canvas;
+    //public GameObject player1;
+    //public GameObject player2;
+    public GameObject UICanvas;
 
     // Use this for initialization
     void Start ()
     {
         Game_Manager.Instance.GameStart();
         allCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
-        player1 = GameObject.FindGameObjectWithTag("Player1");
-        player2 = GameObject.FindGameObjectWithTag("Player2");
+        //player1 = GameObject.FindGameObjectWithTag("Player1");
+        //player2 = GameObject.FindGameObjectWithTag("Player2");
     }
 	
 	// Update is called once per frame
@@ -31,7 +30,7 @@ public class Finishline : MonoBehaviour
         {
             if (coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed == allCheckpoints.Length)
             {
-                Game_Manager.Instance.GameOver(coll.gameObject, true, p1Canvas, p2Canvas);
+                Game_Manager.Instance.GameOver(coll.gameObject, true, UICanvas);
             }
         }
     }

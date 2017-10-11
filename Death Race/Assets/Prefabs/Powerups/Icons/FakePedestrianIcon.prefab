@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4218769621596592}
   - component: {fileID: 212783128624824060}
   - component: {fileID: 114491932444254202}
-  - component: {fileID: 114470317999184442}
   m_Layer: 0
   m_Name: FakePedestrianIcon
   m_TagString: Untagged
@@ -42,38 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114470317999184442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343001208856842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 177
-    i1: 43
-    i2: 138
-    i3: 197
-    i4: 96
-    i5: 116
-    i6: 108
-    i7: 212
-    i8: 11
-    i9: 222
-    i10: 51
-    i11: 111
-    i12: 126
-    i13: 167
-    i14: 164
-    i15: 247
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114491932444254202
 MonoBehaviour:
   m_ObjectHideFlags: 1

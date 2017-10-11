@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4585688787418028}
   - component: {fileID: 212384343379377958}
   - component: {fileID: 114792327063329226}
-  - component: {fileID: 114632080363007632}
   m_Layer: 0
   m_Name: ShieldIcon
   m_TagString: Untagged
@@ -42,38 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114632080363007632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225853025088844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 170
-    i1: 150
-    i2: 93
-    i3: 218
-    i4: 43
-    i5: 212
-    i6: 236
-    i7: 212
-    i8: 10
-    i9: 247
-    i10: 26
-    i11: 31
-    i12: 172
-    i13: 3
-    i14: 63
-    i15: 249
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114792327063329226
 MonoBehaviour:
   m_ObjectHideFlags: 1

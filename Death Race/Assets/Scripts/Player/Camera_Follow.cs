@@ -5,39 +5,19 @@ using UnityEngine;
 public class Camera_Follow : MonoBehaviour
 {
     float cameraZDistance = -10f;
-    public GameObject followTarget;
-    public int playerNumToFollow = 0;
 
 	// Use this for initialization
 	void Start ()
     {
-        if(playerNumToFollow == 1)
-        {
-            followTarget = GameObject.FindGameObjectWithTag("Player1");
-        }
-        else
-        {
-            followTarget = GameObject.FindGameObjectWithTag("Player2");
-        }
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (followTarget == null)
-        {
-            if (playerNumToFollow == 1)
-            {
-                followTarget = GameObject.FindGameObjectWithTag("Player1");
-            }
-            else
-            {
-                followTarget = GameObject.FindGameObjectWithTag("Player2");
-            }
-        }
-        else
-        {
-            transform.position = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, cameraZDistance);
+        if(Game_Manager.Instance.player)
+        { 
+            transform.position = new Vector3(Game_Manager.Instance.player.transform.position.x, Game_Manager.Instance.player.transform.position.y, cameraZDistance);
         }
 	}
 }

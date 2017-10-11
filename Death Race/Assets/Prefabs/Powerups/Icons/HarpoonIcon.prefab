@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4595912385309262}
   - component: {fileID: 212517726568131154}
   - component: {fileID: 114651702073481478}
-  - component: {fileID: 114208743595465672}
   m_Layer: 0
   m_Name: HarpoonIcon
   m_TagString: Untagged
@@ -42,38 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -130.77301}
---- !u!114 &114208743595465672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1756045057177108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 9
-    i1: 255
-    i2: 83
-    i3: 234
-    i4: 232
-    i5: 28
-    i6: 218
-    i7: 36
-    i8: 168
-    i9: 26
-    i10: 116
-    i11: 217
-    i12: 24
-    i13: 200
-    i14: 61
-    i15: 116
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114651702073481478
 MonoBehaviour:
   m_ObjectHideFlags: 1

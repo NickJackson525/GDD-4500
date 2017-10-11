@@ -17,14 +17,12 @@ public class Car_Controller : NetworkBehaviour
     public int health = 100;
 
     GameObject createdPickup;
-    public int playerNumber = 0;
     public GameObject kittenCannon;
     public GameObject kittenFollowPrefab;
     public GameObject shield;
     public GameObject fakePedestrian;
     public GameObject harpoon;
-    public GameObject p1Canvas;
-    public GameObject p2Canvas;
+    public GameObject UICanvas;
     GameObject startLight;
     GameObject temp;
     float speed = 17f;
@@ -39,19 +37,15 @@ public class Car_Controller : NetworkBehaviour
     Quaternion initialRotation;
     Quaternion tempRotation;
     Rigidbody2D rb;
-    public Text debug;
-    Camera mainCamera;
 
     #endregion
 
     #region Start
 
-    //public override void OnStartLocalPlayer()
-    //{
-    //    mainCamera = GameObject.FindObjectOfType<Camera>();
-
-    //    CmdIncreasePlayerCount();
-    //}
+    public override void OnStartLocalPlayer()
+    {
+        Game_Manager.Instance.player = gameObject;
+    }
 
     // Use this for initialization
     void Start()
@@ -63,14 +57,10 @@ public class Car_Controller : NetworkBehaviour
 
         startLight = GameObject.FindGameObjectWithTag("StartLight");
         initialRotation = transform.rotation;
-        p1Canvas = GameObject.FindGameObjectWithTag("p1Canvas");
-        p2Canvas = GameObject.FindGameObjectWithTag("p2Canvas");
+        UICanvas = GameObject.FindGameObjectWithTag("p1Canvas");
         rb = GetComponent<Rigidbody2D>();
-        debug = GameObject.Find("DebugText").GetComponent<Text>();
-        mainCamera = GameObject.FindObjectOfType<Camera>();
-        mainCamera = GameObject.FindObjectOfType<Camera>();
 
-        CmdIncreasePlayerCount();
+        //CmdIncreasePlayerCount();
 
         //if (GameObject.FindGameObjectWithTag("Player1"))
         //{
@@ -99,82 +89,82 @@ public class Car_Controller : NetworkBehaviour
             return;
         }
 
-        if (playerNumber == 1)
-        {
+        //if (playerNumber == 1)
+        //{
             #region Player 1 Health
 
-            Game_Manager.Instance.p1Health[0].transform.position = transform.position;
-            Game_Manager.Instance.p1Health[0].transform.rotation = transform.rotation;
-            Game_Manager.Instance.p1Health[1].transform.position = transform.position;
-            Game_Manager.Instance.p1Health[1].transform.rotation = transform.rotation;
+            Game_Manager.Instance.playerHealth[0].transform.position = transform.position;
+            Game_Manager.Instance.playerHealth[0].transform.rotation = transform.rotation;
+            Game_Manager.Instance.playerHealth[1].transform.position = transform.position;
+            Game_Manager.Instance.playerHealth[1].transform.rotation = transform.rotation;
 
-            if(Game_Manager.Instance.p1Health[0].name == "HealthBar")
+            if(Game_Manager.Instance.playerHealth[0].name == "HealthBar")
             {
-                Game_Manager.Instance.p1Health[0].GetComponent<Image>().fillAmount = (float)health / 100f;
+                Game_Manager.Instance.playerHealth[0].GetComponent<Image>().fillAmount = (float)health / 100f;
 
                 if(health <= 25)
                 {
-                    Game_Manager.Instance.p1Health[0].GetComponent<Image>().color = Color.red;
+                    Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.red;
                 }
                 else if(health <= 50)
                 {
-                    Game_Manager.Instance.p1Health[0].GetComponent<Image>().color = Color.yellow;
+                    Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.yellow;
                 }
             }
             else
             {
-                Game_Manager.Instance.p1Health[1].GetComponent<Image>().fillAmount = (float)health / 100f;
+                Game_Manager.Instance.playerHealth[1].GetComponent<Image>().fillAmount = (float)health / 100f;
 
                 if (health <= 25)
                 {
-                    Game_Manager.Instance.p1Health[1].GetComponent<Image>().color = Color.red;
+                    Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.red;
                 }
                 else if (health <= 50)
                 {
-                    Game_Manager.Instance.p1Health[1].GetComponent<Image>().color = Color.yellow;
+                    Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.yellow;
                 }
             }
 
             #endregion
-        }
-        else if (playerNumber == 2)
-        {
+        //}
+        //else if (playerNumber == 2)
+        //{
             #region Player 2 Health
 
-            Game_Manager.Instance.p2Health[0].transform.position = transform.position;
-            Game_Manager.Instance.p2Health[0].transform.rotation = transform.rotation;
-            Game_Manager.Instance.p2Health[1].transform.position = transform.position;
-            Game_Manager.Instance.p2Health[1].transform.rotation = transform.rotation;
+        //    Game_Manager.Instance.p2Health[0].transform.position = transform.position;
+        //    Game_Manager.Instance.p2Health[0].transform.rotation = transform.rotation;
+        //    Game_Manager.Instance.p2Health[1].transform.position = transform.position;
+        //    Game_Manager.Instance.p2Health[1].transform.rotation = transform.rotation;
 
-            if (Game_Manager.Instance.p2Health[0].name == "HealthBar")
-            {
-                Game_Manager.Instance.p2Health[0].GetComponent<Image>().fillAmount = (float)health / 100f;
+        //    if (Game_Manager.Instance.p2Health[0].name == "HealthBar")
+        //    {
+        //        Game_Manager.Instance.p2Health[0].GetComponent<Image>().fillAmount = (float)health / 100f;
 
-                if (health <= 25)
-                {
-                    Game_Manager.Instance.p2Health[0].GetComponent<Image>().color = Color.red;
-                }
-                else if (health <= 50)
-                {
-                    Game_Manager.Instance.p2Health[0].GetComponent<Image>().color = Color.yellow;
-                }
-            }
-            else
-            {
-                Game_Manager.Instance.p2Health[1].GetComponent<Image>().fillAmount = (float)health / 100f;
+        //        if (health <= 25)
+        //        {
+        //            Game_Manager.Instance.p2Health[0].GetComponent<Image>().color = Color.red;
+        //        }
+        //        else if (health <= 50)
+        //        {
+        //            Game_Manager.Instance.p2Health[0].GetComponent<Image>().color = Color.yellow;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Game_Manager.Instance.p2Health[1].GetComponent<Image>().fillAmount = (float)health / 100f;
 
-                if (health <= 25)
-                {
-                    Game_Manager.Instance.p2Health[1].GetComponent<Image>().color = Color.red;
-                }
-                else if (health <= 50)
-                {
-                    Game_Manager.Instance.p2Health[1].GetComponent<Image>().color = Color.yellow;
-                }
-            }
+        //        if (health <= 25)
+        //        {
+        //            Game_Manager.Instance.p2Health[1].GetComponent<Image>().color = Color.red;
+        //        }
+        //        else if (health <= 50)
+        //        {
+        //            Game_Manager.Instance.p2Health[1].GetComponent<Image>().color = Color.yellow;
+        //        }
+        //    }
 
             #endregion
-        }
+        //}
     }
 
     // Update is called once per frame
@@ -189,8 +179,8 @@ public class Car_Controller : NetworkBehaviour
 
         if ((startLight.activeSelf == false) && canMove)
         {
-            if (playerNumber == 1)
-            {
+            //if (playerNumber == 1)
+            //{
                 #region Player 1 Controls
 
                 if (Input.GetKey(KeyCode.W))
@@ -219,38 +209,38 @@ public class Car_Controller : NetworkBehaviour
                 }
 
                 #endregion
-            }
-            else if (playerNumber == 2)
-            {
+            //}
+            //else if (playerNumber == 2)
+            //{
                 #region Player 2 Controls
 
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    rb.AddForce(transform.up * speed);
-                }
+            //    if (Input.GetKey(KeyCode.UpArrow))
+            //    {
+            //        rb.AddForce(transform.up * speed);
+            //    }
 
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    rb.AddForce(transform.up * (-speed / 2));
-                }
+            //    if (Input.GetKey(KeyCode.DownArrow))
+            //    {
+            //        rb.AddForce(transform.up * (-speed / 2));
+            //    }
 
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    rb.angularVelocity = -turnPower;
-                }
+            //    if (Input.GetKey(KeyCode.LeftArrow))
+            //    {
+            //        rb.angularVelocity = -turnPower;
+            //    }
 
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    rb.angularVelocity = turnPower;
-                }
+            //    if (Input.GetKey(KeyCode.RightArrow))
+            //    {
+            //        rb.angularVelocity = turnPower;
+            //    }
 
-                if (hasPickup && Input.GetKeyUp(KeyCode.KeypadEnter))
-                {
-                    CmdUsePickup();
-                }
+            //    if (hasPickup && Input.GetKeyUp(KeyCode.KeypadEnter))
+            //    {
+            //        CmdUsePickup();
+            //    }
 
                 #endregion
-            }
+            //}
         }
 
         if(collisionTimer > 0)
@@ -279,7 +269,7 @@ public class Car_Controller : NetworkBehaviour
 
     public void LostGame()
     {
-        Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+        Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
     }
 
     [Command]
@@ -348,33 +338,33 @@ public class Car_Controller : NetworkBehaviour
         NetworkServer.Spawn(temp);
     }
 
-    [Command]
-    public void CmdIncreasePlayerCount()
-    {
-        if(!localPlayerAuthority)
-        {
-            return;
-        }
+    //[Command]
+    //public void CmdIncreasePlayerCount()
+    //{
+    //    if(!localPlayerAuthority)
+    //    {
+    //        return;
+    //    }
 
-        if (Game_Manager.Instance.playerNumber > 1)
-        {
-            gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
-            Game_Manager.Instance.player2 = gameObject;
-            playerNumber = Game_Manager.Instance.playerNumber;
-        }
-        else
-        {
-            gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
-            mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
-            mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
-            Game_Manager.Instance.player1 = gameObject;
-            playerNumber = Game_Manager.Instance.playerNumber;
-        }
+    //    if (Game_Manager.Instance.playerNumber > 1)
+    //    {
+    //        gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
+    //        mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
+    //        mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
+    //        Game_Manager.Instance.player2 = gameObject;
+    //        playerNumber = Game_Manager.Instance.playerNumber;
+    //    }
+    //    else
+    //    {
+    //        gameObject.tag = "Player" + Game_Manager.Instance.playerNumber;
+    //        mainCamera.GetComponent<Camera_Follow>().playerNumToFollow = Game_Manager.Instance.playerNumber;
+    //        mainCamera.GetComponent<Camera>().cullingMask ^= 1 << LayerMask.NameToLayer("Player " + Game_Manager.Instance.playerNumber);
+    //        Game_Manager.Instance.player1 = gameObject;
+    //        playerNumber = Game_Manager.Instance.playerNumber;
+    //    }
 
-        Game_Manager.Instance.playerNumber++;
-    }
+    //    Game_Manager.Instance.playerNumber++;
+    //}
 
     #endregion
 
@@ -390,7 +380,7 @@ public class Car_Controller : NetworkBehaviour
 
             if (health <= 0)
             {
-                Game_Manager.Instance.GameOver(this.gameObject, false, p1Canvas, p2Canvas);
+                Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
             }
         }
     }

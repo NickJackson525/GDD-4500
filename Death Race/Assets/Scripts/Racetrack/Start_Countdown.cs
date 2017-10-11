@@ -22,7 +22,7 @@ public class Start_Countdown : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (GameObject.FindGameObjectWithTag("Player2"))
+        if (Input.GetKey(KeyCode.Space) && (GameObject.FindGameObjectsWithTag("Player").Length > 1))
         {
             timer--;
 

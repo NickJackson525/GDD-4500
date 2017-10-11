@@ -29,7 +29,7 @@ public class Pedestrian : NetworkBehaviour
 		
 	}
 
-    [Command]
+    //[Command]
     void CmdSpawnPickup()
     {
         switch (Random.Range(0, 4))
@@ -67,13 +67,11 @@ public class Pedestrian : NetworkBehaviour
         {
             createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 9;
         }
-
-        NetworkServer.Spawn(createdInstance);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if((coll.gameObject.tag.Contains("Player")))
+        if((coll.gameObject.tag.Contains("Player")) && coll.gameObject.GetComponent<Car_Controller>().localPlayerAuthority)
         {
             if (!coll.gameObject.GetComponent<Car_Controller>().hasPickup)
             {

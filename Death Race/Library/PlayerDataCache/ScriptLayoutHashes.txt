@@ -114,8 +114,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 b6cdea416552ea7cef7b4fe0f2097611 Assembly-CSharp.dll:.Kitten_Cannon
 3f92bd28e672f0977721e64bd9b3fc7a Assembly-CSharp.dll:.Bomb_Explosion
-85cf08c480fd27dff434edb21f1979df Assembly-CSharp.dll:.Camera_Follow
-d983a96d346663b93cb921be07e53611 Assembly-CSharp.dll:.Finishline
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Camera_Follow
+31e14dd3c53eede730dbfb8bfcb5703f Assembly-CSharp.dll:.Finishline
 bbe18291d06f8100428e2b77e6df4e4f Assembly-CSharp.dll:.Shield_Animation_Transition
 a893166a1d13e3237e6b6010d6d63a27 Assembly-CSharp.dll:.Pickup_Icon
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -146,5 +146,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 663576a56d2d11d2ef0a59afa898a2ab Assembly-CSharp.dll:.Shield_Pickup
 95ec1ec0162966bd2d721f30f4a6c508 Assembly-CSharp.dll:.Fire_Timer
 cc7172fb322da0fc5eaba5e7b52db3bf Assembly-CSharp.dll:.Start_Countdown
-bec29b1669b4baf3e61e9e2621028867 Assembly-CSharp.dll:.Car_Controller
+de1f7ba914e1d4a3dbbde7dbb14fe152 Assembly-CSharp.dll:.Car_Controller
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Fake_Pedestrian
