@@ -23,8 +23,13 @@ public class Car_Controller : NetworkBehaviour
     public GameObject fakePedestrian;
     public GameObject harpoon;
     public GameObject UICanvas;
+    public GameObject kittenIcon;
+    public GameObject shieldIcon;
+    public GameObject harpoonIcon;
+    public GameObject fakePedestrianIcon;
     GameObject startLight;
     GameObject temp;
+    GameObject createdIcon;
     float speed = 17f;
     float turnPower = -110f;
     float driftPower = 0.95f;
@@ -270,6 +275,39 @@ public class Car_Controller : NetworkBehaviour
     public void LostGame()
     {
         Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
+    }
+
+    public void SpawnPickupIcon()
+    {
+        if (isLocalPlayer)
+        {
+            switch (UnityEngine.Random.Range(0, 4))
+            {
+                case 0:
+                    currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
+                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+                    break;
+                case 1:
+                    currentPickup = Game_Manager.Pickup.HARPOON;
+                    createdIcon = Instantiate(harpoonIcon, transform.position, transform.rotation);
+                    break;
+                case 2:
+                    currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+                    createdIcon = Instantiate(kittenIcon, transform.position, transform.rotation);
+                    break;
+                case 3:
+                    currentPickup = Game_Manager.Pickup.SHIELD;
+                    createdIcon = Instantiate(shieldIcon, transform.position, transform.rotation);
+                    break;
+                default:
+                    currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
+                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+                    break;
+            }
+
+            createdIcon.GetComponent<Pickup_Icon>().followTarget = gameObject;
+            hasPickup = true;
+        }
     }
 
     [Command]

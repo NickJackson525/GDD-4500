@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Pedestrian : NetworkBehaviour
+public class Pedestrian : MonoBehaviour
 {
     #region Variables
 
@@ -71,17 +71,12 @@ public class Pedestrian : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if((coll.gameObject.tag.Contains("Player")) && coll.gameObject.GetComponent<Car_Controller>().localPlayerAuthority)
+        if((coll.gameObject.tag.Contains("Player")) && coll.gameObject.GetComponent<Car_Controller>().isLocalPlayer)
         {
             if (!coll.gameObject.GetComponent<Car_Controller>().hasPickup)
             {
-                //only 50% chance to give pickup
-                if (Random.Range(pickupChance, pickupChance) == pickupChance)
-                {
-                    collidedPlayer = coll.gameObject;
-                    CmdSpawnPickup();
-                }
-
+                collidedPlayer = coll.gameObject;
+                coll.GetComponent<Car_Controller>().SpawnPickupIcon();
                 Destroy(this.gameObject);
             }
             else
