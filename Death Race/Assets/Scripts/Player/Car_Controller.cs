@@ -184,68 +184,35 @@ public class Car_Controller : NetworkBehaviour
 
         if ((startLight.activeSelf == false) && canMove)
         {
-            //if (playerNumber == 1)
-            //{
-                #region Player 1 Controls
+            #region Player Controls
 
-                if (Input.GetKey(KeyCode.W))
-                {
-                    rb.AddForce(transform.up * speed);
-                }
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(transform.up * speed);
+            }
 
-                if (Input.GetKey(KeyCode.S))
-                {
-                    rb.AddForce(transform.up * (-speed / 2));
-                }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(transform.up * (-speed / 2));
+            }
 
-                if (Input.GetKey(KeyCode.A))
-                {
-                    rb.angularVelocity = -turnPower;
-                }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.angularVelocity = -turnPower;
+            }
 
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.angularVelocity = turnPower;
-                }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.angularVelocity = turnPower;
+            }
 
-                if (hasPickup && Input.GetKeyUp(KeyCode.Space))
-                {
-                    CmdUsePickup();
-                }
+            if (hasPickup && Input.GetKeyUp(KeyCode.Space))
+            {
+                CmdUsePickup();
+                hasPickup = false;
+            }
 
-                #endregion
-            //}
-            //else if (playerNumber == 2)
-            //{
-                #region Player 2 Controls
-
-            //    if (Input.GetKey(KeyCode.UpArrow))
-            //    {
-            //        rb.AddForce(transform.up * speed);
-            //    }
-
-            //    if (Input.GetKey(KeyCode.DownArrow))
-            //    {
-            //        rb.AddForce(transform.up * (-speed / 2));
-            //    }
-
-            //    if (Input.GetKey(KeyCode.LeftArrow))
-            //    {
-            //        rb.angularVelocity = -turnPower;
-            //    }
-
-            //    if (Input.GetKey(KeyCode.RightArrow))
-            //    {
-            //        rb.angularVelocity = turnPower;
-            //    }
-
-            //    if (hasPickup && Input.GetKeyUp(KeyCode.KeypadEnter))
-            //    {
-            //        CmdUsePickup();
-            //    }
-
-                #endregion
-            //}
+            #endregion
         }
 
         if(collisionTimer > 0)
@@ -285,23 +252,23 @@ public class Car_Controller : NetworkBehaviour
             {
                 case 0:
                     currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
-                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, initialRotation);
                     break;
                 case 1:
                     currentPickup = Game_Manager.Pickup.HARPOON;
-                    createdIcon = Instantiate(harpoonIcon, transform.position, transform.rotation);
+                    createdIcon = Instantiate(harpoonIcon, transform.position, initialRotation);
                     break;
                 case 2:
                     currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
-                    createdIcon = Instantiate(kittenIcon, transform.position, transform.rotation);
+                    createdIcon = Instantiate(kittenIcon, transform.position, initialRotation);
                     break;
                 case 3:
                     currentPickup = Game_Manager.Pickup.SHIELD;
-                    createdIcon = Instantiate(shieldIcon, transform.position, transform.rotation);
+                    createdIcon = Instantiate(shieldIcon, transform.position, initialRotation);
                     break;
                 default:
                     currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
-                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+                    createdIcon = Instantiate(fakePedestrianIcon, transform.position, initialRotation);
                     break;
             }
 
@@ -313,10 +280,10 @@ public class Car_Controller : NetworkBehaviour
     [Command]
     void CmdUsePickup()
     {
-        if (!localPlayerAuthority)
-        {
-            return;
-        }
+        //if (!isLocalPlayer)
+        //{
+        //    return;
+        //}
 
         switch (currentPickup)
         {
@@ -349,7 +316,6 @@ public class Car_Controller : NetworkBehaviour
                 break;
         }
 
-        hasPickup = false;
         NetworkServer.Spawn(createdPickup);
     }
 

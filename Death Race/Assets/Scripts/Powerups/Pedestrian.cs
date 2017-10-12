@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Pedestrian : MonoBehaviour
+public class Pedestrian : NetworkBehaviour
 {
     #region Variables
 
@@ -13,7 +13,6 @@ public class Pedestrian : MonoBehaviour
     public GameObject shieldIcon;
     public GameObject harpoonIcon;
     public GameObject fakePedestrianIcon;
-    int pickupChance = 2;
 
     #endregion
 
