@@ -25,35 +25,17 @@ public class Kitten_Follow : NetworkBehaviour
     {
         targetPosition = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, -1f);
 
-        if(followTarget.tag == "Player1")
+        if ((Input.GetKeyDown (KeyCode.A)) && (nextDirection == SwerveDirection.LEFT))
         {
-            if ((Input.GetKeyDown (KeyCode.A)) && (nextDirection == SwerveDirection.LEFT))
-            {
-                sequenceCount++;
-                nextDirection = SwerveDirection.RIGHT;
-                //targetPosition = new Vector3(followTarget.transform.position.x - 3f, followTarget.transform.position.y, followTarget.transform.position.z);
-            }
-            if ((Input.GetKeyDown(KeyCode.D)) && (nextDirection == SwerveDirection.RIGHT))
-            {
-                sequenceCount++;
-                nextDirection = SwerveDirection.LEFT;
-                //targetPosition = new Vector3(followTarget.transform.position.x + 3f, followTarget.transform.position.y, followTarget.transform.position.z);
-            }
+            sequenceCount++;
+            nextDirection = SwerveDirection.RIGHT;
+            //targetPosition = new Vector3(followTarget.transform.position.x - 3f, followTarget.transform.position.y, followTarget.transform.position.z);
         }
-        else
+        if ((Input.GetKeyDown(KeyCode.D)) && (nextDirection == SwerveDirection.RIGHT))
         {
-            if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (nextDirection == SwerveDirection.LEFT))
-            {
-                sequenceCount++;
-                nextDirection = SwerveDirection.RIGHT;
-                //targetPosition = new Vector3(followTarget.transform.position.x - 3f, followTarget.transform.position.y, followTarget.transform.position.z);
-            }
-            if ((Input.GetKeyDown(KeyCode.RightArrow)) && (nextDirection == SwerveDirection.RIGHT))
-            {
-                sequenceCount++;
-                nextDirection = SwerveDirection.LEFT;
-                //targetPosition = new Vector3(followTarget.transform.position.x + 3f, followTarget.transform.position.y, followTarget.transform.position.z);
-            }
+            sequenceCount++;
+            nextDirection = SwerveDirection.LEFT;
+            //targetPosition = new Vector3(followTarget.transform.position.x + 3f, followTarget.transform.position.y, followTarget.transform.position.z);
         }
 
         transform.position = targetPosition;

@@ -11,6 +11,8 @@ public class Car_Controller : NetworkBehaviour
 
     [SyncVar]
     public int health = 100;
+    [SyncVar]
+    public int score = 0;
 
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
     public bool hasPickup = false;
@@ -198,7 +200,24 @@ public class Car_Controller : NetworkBehaviour
 
     public void LostGame()
     {
+        Game_Manager.Instance.startEnd.playersFinished++;
         Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
+
+        if (Game_Manager.Instance.startEnd.topScores.Count > 2)
+        {
+            for (int i = 0; i < Game_Manager.Instance.startEnd.topScores.Count; i++)
+            {
+                if (score > int.Parse(Game_Manager.Instance.startEnd.topScores[i]))
+                {
+                    Game_Manager.Instance.startEnd.topScores.RemoveAt(i);
+                    Game_Manager.Instance.startEnd.topScores.Add(score.ToString());
+                }
+            }
+        }
+        else
+        {
+            Game_Manager.Instance.startEnd.topScores.Add(score.ToString());
+        }
     }
 
     public void SpawnPickupIcon()
@@ -243,6 +262,7 @@ public class Car_Controller : NetworkBehaviour
                 tempRotation = transform.rotation;
                 transform.rotation = initialRotation;
                 createdPickup = Instantiate(fakePedestrian, new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z), transform.rotation);
+                createdPickup.GetComponent<Fake_Pedestrian>().playerStart = this.gameObject;
                 transform.rotation = tempRotation;
                 break;
             case Game_Manager.Pickup.HARPOON:
@@ -271,27 +291,13 @@ public class Car_Controller : NetworkBehaviour
         NetworkServer.Spawn(createdPickup);
     }
 
-    [Command]
-    public void CmdCreateKittenFollow()
+    public void CreateKittenFollow()
     {
-        if (!localPlayerAuthority)
+        if (isLocalPlayer)
         {
-            return;
+            temp = Instantiate(kittenFollowPrefab);
+            temp.GetComponent<Kitten_Follow>().followTarget = gameObject;
         }
-
-        temp = Instantiate(kittenFollowPrefab);
-        temp.GetComponent<Kitten_Follow>().followTarget = gameObject;
-
-        if (gameObject.tag.Contains("Player1"))
-        {
-            temp.gameObject.layer = 8;
-        }
-        else if (gameObject.tag.Contains("Player2"))
-        {
-            temp.gameObject.layer = 9;
-        }
-
-        NetworkServer.Spawn(temp);
     }
 
     [Command]

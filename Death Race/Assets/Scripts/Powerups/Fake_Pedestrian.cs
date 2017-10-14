@@ -5,8 +5,11 @@ using UnityEngine.Networking;
 
 public class Fake_Pedestrian : NetworkBehaviour
 {
-	// Use this for initialization
-	void Start ()
+    [SyncVar]
+    public GameObject playerStart;
+
+    // Use this for initialization
+    void Start ()
     {
 
 	}
@@ -22,6 +25,7 @@ public class Fake_Pedestrian : NetworkBehaviour
         if(coll.gameObject.tag.Contains("Player"))
         {
             coll.gameObject.GetComponent<Car_Controller>().health -= 40;
+            playerStart.GetComponent<Car_Controller>().score += 100;
             Destroy(this.gameObject);
         }
     }

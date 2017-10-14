@@ -9,6 +9,7 @@ public class Harpoon : NetworkBehaviour
     public GameObject playerStart;
     [SyncVar]
     GameObject playerToPush;
+
     public Rigidbody2D rb;
     public float speed = 12f;
     int timer = 0;
@@ -43,11 +44,12 @@ public class Harpoon : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if ((coll.gameObject.tag.Contains("Player")) && (!hitPlayer) && (coll.gameObject.tag != playerStart.tag))
+        if ((coll.gameObject.tag.Contains("Player")) && (!hitPlayer) && (coll.gameObject != playerStart))
         {
             playerToPush = coll.gameObject;
+            playerStart.GetComponent<Car_Controller>().score += 100;
             hitPlayer = true;
-            timer = 60;
+            timer = 30;
         }
 
         if (coll.tag.Contains("Racetrack"))

@@ -7,11 +7,10 @@ public class Shield_Animation_Transition : NetworkBehaviour
 {
     #region Variables
 
-    public GameObject Shield_Close;
-
     [SyncVar]
     public GameObject carToFollow;
 
+    public GameObject Shield_Close;
     GameObject createdShield;
 
     #endregion
@@ -69,10 +68,11 @@ public class Shield_Animation_Transition : NetworkBehaviour
             CmdNextState();
         }
 
-        if (coll.gameObject.tag.Contains("Player") && (coll.gameObject.tag != carToFollow.tag))
+        if (coll.gameObject.tag.Contains("Player") && (coll.gameObject != carToFollow))
         {
             coll.gameObject.GetComponent<Car_Controller>().health -= 20;
             coll.gameObject.GetComponent<Car_Controller>().collisionTimer = 60;
+            carToFollow.GetComponent<Car_Controller>().score += 100;
 
             if (coll.gameObject.GetComponent<Car_Controller>().health <= 0)
             {

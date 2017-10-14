@@ -151,11 +151,5 @@ public class Game_Manager
         }
     }
 
-    //public void AddCar(GameObject carToAdd)
-    //{
-    //    Cars.Add(carToAdd);
-    //    playerNumber++;
-    //}
-
     #endregion
 }

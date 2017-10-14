@@ -7,11 +7,10 @@ public class Shield_Animation_Create : NetworkBehaviour
 {
     #region Variables
 
-    public GameObject Shield_Full;
-
     [SyncVar]
     public GameObject carToFollow;
 
+    public GameObject Shield_Full;
     GameObject createdShield;
     string currentSprite;
 
@@ -60,26 +59,6 @@ public class Shield_Animation_Create : NetworkBehaviour
     #endregion
 
     #region Collision Methods
-
-    //private void OnTriggerEnter2D(Collider2D coll)
-    //{
-    //    if (coll.gameObject.tag.Contains("Racetrack") || coll.gameObject.tag.Contains("Powerup"))
-    //    {
-    //        Destroy(this.gameObject);
-    //    }
-
-    //    if (coll.gameObject.tag.Contains("Player") && (coll.gameObject.tag != carToFollow.tag))
-    //    {
-    //        coll.gameObject.GetComponent<Car_Controller>().health -= 20;
-    //        coll.gameObject.GetComponent<Car_Controller>().collisionTimer = 60;
-    //        Destroy(this.gameObject);
-
-    //        if (coll.gameObject.GetComponent<Car_Controller>().health <= 0)
-    //        {
-    //            coll.gameObject.GetComponent<Car_Controller>().LostGame();
-    //        }
-    //    }
-    //}
 
     #endregion
 }
