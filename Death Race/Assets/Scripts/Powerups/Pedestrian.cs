@@ -29,58 +29,58 @@ public class Pedestrian : NetworkBehaviour
 	}
 
     //[Command]
-    void CmdSpawnPickup()
-    {
-        switch (Random.Range(0, 4))
-        {
-            case 0:
-                collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
-                createdInstance = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
-                break;
-            case 1:
-                collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.HARPOON;
-                createdInstance = Instantiate(harpoonIcon, transform.position, transform.rotation);
-                break;
-            case 2:
-                collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
-                createdInstance = Instantiate(kittenIcon, transform.position, transform.rotation);
-                break;
-            case 3:
-                collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.SHIELD;
-                createdInstance = Instantiate(shieldIcon, transform.position, transform.rotation);
-                break;
-            default:
-                collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
-                createdInstance = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
-                break;
-        }
+    //void CmdSpawnPickup()
+    //{
+    //    switch (Random.Range(0, 4))
+    //    {
+    //        case 0:
+    //            collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
+    //            createdInstance = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+    //            break;
+    //        case 1:
+    //            collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.HARPOON;
+    //            createdInstance = Instantiate(harpoonIcon, transform.position, transform.rotation);
+    //            break;
+    //        case 2:
+    //            collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
+    //            createdInstance = Instantiate(kittenIcon, transform.position, transform.rotation);
+    //            break;
+    //        case 3:
+    //            collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.SHIELD;
+    //            createdInstance = Instantiate(shieldIcon, transform.position, transform.rotation);
+    //            break;
+    //        default:
+    //            collidedPlayer.GetComponent<Car_Controller>().currentPickup = Game_Manager.Pickup.FAKE_PEDESTRIAN;
+    //            createdInstance = Instantiate(fakePedestrianIcon, transform.position, transform.rotation);
+    //            break;
+    //    }
 
-        createdInstance.GetComponent<Pickup_Icon>().followTarget = collidedPlayer.gameObject;
-        collidedPlayer.GetComponent<Car_Controller>().hasPickup = true;
+    //    createdInstance.GetComponent<Pickup_Icon>().followTarget = collidedPlayer.gameObject;
+    //    collidedPlayer.GetComponent<Car_Controller>().hasPickup = true;
 
-        if (collidedPlayer.tag == "Player1")
-        {
-            createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 8;
-        }
-        else
-        {
-            createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 9;
-        }
-    }
+    //    if (collidedPlayer.tag == "Player1")
+    //    {
+    //        createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 8;
+    //    }
+    //    else
+    //    {
+    //        createdInstance.GetComponent<Pickup_Icon>().gameObject.layer = 9;
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if((coll.gameObject.tag.Contains("Player")) && coll.gameObject.GetComponent<Car_Controller>().isLocalPlayer)
+        if(coll.gameObject.tag.Contains("Player"))
         {
             if (!coll.gameObject.GetComponent<Car_Controller>().hasPickup)
             {
-                collidedPlayer = coll.gameObject;
+                //collidedPlayer = coll.gameObject;
                 coll.GetComponent<Car_Controller>().SpawnPickupIcon();
-                Destroy(this.gameObject);
+                NetworkServer.Destroy(this.gameObject);
             }
             else
             {
-                Destroy(this.gameObject);
+                NetworkServer.Destroy(this.gameObject);
             }
         }
     }

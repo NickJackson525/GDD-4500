@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4065528231532016}
   - component: {fileID: 212428655231861880}
   - component: {fileID: 114125660886145218}
+  - component: {fileID: 114121200570013324}
   m_Layer: 0
   m_Name: StartLight
   m_TagString: StartLight
@@ -41,6 +42,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114121200570013324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112496221938052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114125660886145218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61,8 +94,6 @@ MonoBehaviour:
   Arrows: {fileID: 1998121485413086, guid: 35196120939257b4b8467b5a6e0d352e, type: 2}
   Enter_Space: {fileID: 1724093041204066, guid: 497f13fd00ec97f4baf53ad57995a983,
     type: 2}
-  Enter_Text: {fileID: 1186337377307582, guid: 7ecf89dcedd58d24abc59682331888d4, type: 2}
-  Space_Text: {fileID: 1411294811306196, guid: b7e3c89fc677c3240ae42435efc96f08, type: 2}
 --- !u!212 &212428655231861880
 SpriteRenderer:
   m_ObjectHideFlags: 1

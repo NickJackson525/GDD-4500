@@ -61,13 +61,22 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 0}
+  m_PlayerPrefab: {fileID: 1040974732349330, guid: 7ee4cade5f4455746bacf76164cbeed3,
+    type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
-  m_SpawnPrefabs: []
-  m_CustomConfig: 0
+  m_SpawnPrefabs:
+  - {fileID: 1319524089196980, guid: c584c4d18c014f04c8848a18766577cb, type: 2}
+  - {fileID: 1824509623767376, guid: e65fbb0cd9c0bf644bd8f59e32a15652, type: 2}
+  - {fileID: 1183261969105206, guid: 6533b98c83051ab438f59bc47e3c3de7, type: 2}
+  - {fileID: 1647489417571408, guid: 48ebad40e17d50c4494deb12a482dcb8, type: 2}
+  - {fileID: 1178177958455070, guid: 0e00f8aa9df59a74cbba7ae59686ecc7, type: 2}
+  - {fileID: 1253630639329386, guid: f098a7182f6e5b9408bd2ef2f0e48362, type: 2}
+  - {fileID: 1135145023281674, guid: 44167e47a26e5f74192e6c3a48a32524, type: 2}
+  - {fileID: 1543891988872592, guid: e84dd900702b44e4186dc0a80fbd0aa8, type: 2}
+  m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
     m_PacketSize: 1440
@@ -109,7 +118,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1

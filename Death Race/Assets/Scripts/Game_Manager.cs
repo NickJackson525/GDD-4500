@@ -16,6 +16,7 @@ public class Game_Manager
     public GameObject[] playerLose;
     public GameObject[] playerHealth;
     public GameObject texts;
+    public StartEnd startEnd;
 
     #endregion
 

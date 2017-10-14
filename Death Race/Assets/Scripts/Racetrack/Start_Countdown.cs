@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Start_Countdown : MonoBehaviour
+public class Start_Countdown : NetworkBehaviour
 {
     public Sprite oneRedLightOn;
     public Sprite twoRedLightsOn;
@@ -22,7 +23,7 @@ public class Start_Countdown : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(KeyCode.Space) && (GameObject.FindGameObjectsWithTag("Player").Length > 1))
+        if (Game_Manager.Instance.startEnd && Game_Manager.Instance.startEnd.startGame)
         {
             timer--;
 
@@ -47,10 +48,9 @@ public class Start_Countdown : MonoBehaviour
                         this.gameObject.GetComponent<SpriteRenderer>().sprite = allGreenLightsOn;
                         break;
                     case "3_Green_On":
-                        this.gameObject.SetActive(false);
                         WASD.SetActive(false);
-                        Arrows.SetActive(false);
                         Enter_Space.SetActive(false);
+                        gameObject.SetActive(false);
                         break;
                     default:
                         break;

@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4781b2ec9e26cc04d843beabe12d08b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   currentPickup: 1
   hasPickup: 0
-  health: 100
   kittenCannon: {fileID: 1183261969105206, guid: 6533b98c83051ab438f59bc47e3c3de7,
     type: 2}
   kittenFollowPrefab: {fileID: 1135145023281674, guid: 44167e47a26e5f74192e6c3a48a32524,
@@ -174,6 +174,8 @@ MonoBehaviour:
   harpoonIcon: {fileID: 1756045057177108, guid: 09ff53eae81cda24a81a74d918c83d74,
     type: 2}
   fakePedestrianIcon: {fileID: 1343001208856842, guid: b12b8ac560746cd40bde336f7ea7a4f7,
+    type: 2}
+  startEndController: {fileID: 1543891988872592, guid: e84dd900702b44e4186dc0a80fbd0aa8,
     type: 2}
   checkpointsPassed: 0
   collisionTimer: 0
