@@ -10,8 +10,6 @@ public class Game_Manager
 
     public GameObject player;
     public enum Pickup { FAKE_PEDESTRIAN, KITTEN_CANNON, HARPOON, SHIELD }
-    //public GameObject[] p2Win;
-    //public GameObject[] p2Lose;
     public GameObject[] playerWin;
     public GameObject[] playerLose;
     public GameObject[] playerHealth;

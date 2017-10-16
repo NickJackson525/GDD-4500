@@ -34,6 +34,7 @@ public class Car_Controller : NetworkBehaviour
     float speed = 17f;
     float turnPower = -110f;
     float driftPower = 0.95f;
+    public int playerNumber = 0;
     public int checkpointsPassed = 0;
     public int collisionTimer = 0;
     public bool hasBomb = false;
@@ -61,6 +62,8 @@ public class Car_Controller : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Game_Manager.Instance.player = gameObject;
+        playerNumber = Game_Manager.Instance.startEnd.playerNumber;
+        Game_Manager.Instance.startEnd.playerNumber++;
     }
 
     // Use this for initialization
@@ -210,13 +213,13 @@ public class Car_Controller : NetworkBehaviour
                 if (score > int.Parse(Game_Manager.Instance.startEnd.topScores[i]))
                 {
                     Game_Manager.Instance.startEnd.topScores.RemoveAt(i);
-                    Game_Manager.Instance.startEnd.topScores.Add(score.ToString());
+                    Game_Manager.Instance.startEnd.topScores.Add(playerNumber + score.ToString());
                 }
             }
         }
         else
         {
-            Game_Manager.Instance.startEnd.topScores.Add(score.ToString());
+            Game_Manager.Instance.startEnd.topScores.Add(playerNumber + score.ToString());
         }
     }
 
