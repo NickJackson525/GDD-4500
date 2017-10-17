@@ -117,7 +117,7 @@ f887194f88eb018edfa1315486aaf22c Assembly-CSharp.dll:.Kitten_Cannon
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Camera_Follow
 31e14dd3c53eede730dbfb8bfcb5703f Assembly-CSharp.dll:.Finishline
 1babff4a32e0e09881cd2760f5b9e3db Assembly-CSharp.dll:.Shield_Animation_Transition
-ca241e8fd871813ab9b57b3454a3b731 Assembly-CSharp.dll:.UIController
+658fd50c389a5c386b5eb69a4d06395c Assembly-CSharp.dll:.UIController
 a893166a1d13e3237e6b6010d6d63a27 Assembly-CSharp.dll:.Pickup_Icon
 060ebad98f693a55642a9f6c027cdedd Assembly-CSharp.dll:.StartEnd
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
