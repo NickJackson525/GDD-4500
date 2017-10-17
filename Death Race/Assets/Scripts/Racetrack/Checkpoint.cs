@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    bool playerOnePassed = false;
-    bool playerTwoPassed = false;
+    bool playerPassed = false;
 
     // Use this for initialization
     void Start ()
@@ -23,17 +22,8 @@ public class Checkpoint : MonoBehaviour
     {
         if (coll.gameObject.tag.Contains("Player"))
         {
-            if ((coll.gameObject.tag == "Player1") && (!playerOnePassed))
-            {
-                coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed++;
-                playerOnePassed = true;
-            }
-
-            if ((coll.gameObject.tag == "Player2") && (!playerTwoPassed))
-            {
-                coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed++;
-                playerTwoPassed = true;
-            }
+            coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed++;
+            playerPassed = true;
         }
     }
 }

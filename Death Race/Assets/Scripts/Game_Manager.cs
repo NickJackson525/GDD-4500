@@ -93,28 +93,10 @@ public class Game_Manager
         {
             #region thisCar Wins
 
-            //if (thisCar.gameObject.tag == "Player1")
-            //{
-                //p2Lose[0].SetActive(true);
-                //p2Lose[0].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-                //p2Lose[1].SetActive(true);
-                //p2Lose[1].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-                playerWin[0].SetActive(true);
-                playerWin[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-                playerWin[1].SetActive(true);
-                playerWin[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-            //}
-            //else if (thisCar.gameObject.tag == "Player2")
-            //{
-            //    //p2Win[0].SetActive(true);
-            //    //p2Win[0].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-            //    //p2Win[1].SetActive(true);
-            //    //p2Win[1].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-            //    p1Lose[0].SetActive(true);
-            //    p1Lose[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-            //    p1Lose[1].SetActive(true);
-            //    p1Lose[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-            //}
+            playerWin[0].SetActive(true);
+            playerWin[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
+            playerWin[1].SetActive(true);
+            playerWin[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
             #endregion
         }
@@ -122,28 +104,10 @@ public class Game_Manager
         {
             #region thisCar Loses
 
-            //if (thisCar.gameObject.tag == "Player2")
-            //{
-            //    p2Lose[0].SetActive(true);
-            //    p2Lose[0].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-            //    p2Lose[1].SetActive(true);
-            //    p2Lose[1].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-                //playerWin[0].SetActive(true);
-                //playerWin[0].transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, 0f);
-                //playerWin[1].SetActive(true);
-                //playerWin[1].transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, 0f);
-            //}
-            //else if (thisCar.gameObject.tag == "Player1")
-            //{
-            //    p2Win[0].SetActive(true);
-            //    p2Win[0].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-            //    p2Win[1].SetActive(true);
-            //    p2Win[1].transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 0f);
-                playerLose[0].SetActive(true);
-                playerLose[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-                playerLose[1].SetActive(true);
-                playerLose[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
-            //}
+            playerLose[0].SetActive(true);
+            playerLose[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
+            playerLose[1].SetActive(true);
+            playerLose[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
             #endregion
         }

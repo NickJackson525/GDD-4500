@@ -76,7 +76,7 @@ public class Shield_Animation_Transition : NetworkBehaviour
 
             if (coll.gameObject.GetComponent<Car_Controller>().health <= 0)
             {
-                coll.gameObject.GetComponent<Car_Controller>().LostGame();
+                coll.gameObject.GetComponent<Car_Controller>().CmdGameOver(false);
             }
 
             CmdNextState();

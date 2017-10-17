@@ -62,6 +62,12 @@ public class Car_Controller : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Game_Manager.Instance.player = gameObject;
+
+        if (!Game_Manager.Instance.startEnd)
+        {
+            Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
+        }
+
         playerNumber = Game_Manager.Instance.startEnd.playerNumber;
         Game_Manager.Instance.startEnd.playerNumber++;
     }
@@ -69,7 +75,7 @@ public class Car_Controller : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        if(!localPlayerAuthority)
+        if(!isLocalPlayer)
         {
             return;
         }
@@ -88,6 +94,17 @@ public class Car_Controller : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            if((playerNumber == 0) && (Game_Manager.Instance.startEnd))
+            {
+                playerNumber = Game_Manager.Instance.startEnd.playerNumber;
+                Game_Manager.Instance.startEnd.playerNumber++;
+            }
+
+            if(Input.GetKeyUp(KeyCode.Escape))
+            {
+                UICanvas.GetComponent<UIController>().ShowHideHighScoreTable();
+            }
+
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 CmdStartGame();
@@ -201,26 +218,95 @@ public class Car_Controller : NetworkBehaviour
         return transform.right * Vector2.Dot(rb.velocity, transform.right);
     }
 
-    public void LostGame()
+    //[Command]
+    public void CmdGameOver(bool didWin)
     {
         Game_Manager.Instance.startEnd.playersFinished++;
-        Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
+        Game_Manager.Instance.GameOver(this.gameObject, didWin, UICanvas);
 
-        if (Game_Manager.Instance.startEnd.topScores.Count > 2)
+        if (Game_Manager.Instance.startEnd.numTopScores == 5)
         {
-            for (int i = 0; i < Game_Manager.Instance.startEnd.topScores.Count; i++)
+            for (int i = 0; i < Game_Manager.Instance.startEnd.numTopScores; i++)
             {
-                if (score > int.Parse(Game_Manager.Instance.startEnd.topScores[i]))
+                if (score > int.Parse(Game_Manager.Instance.startEnd.score1stPlace.Split(' ')[1]))
                 {
-                    Game_Manager.Instance.startEnd.topScores.RemoveAt(i);
-                    Game_Manager.Instance.startEnd.topScores.Add(playerNumber + score.ToString());
+                    Game_Manager.Instance.startEnd.score5thPlace = Game_Manager.Instance.startEnd.score1stPlace;
+                    Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + score;
+                }
+                else if (score > int.Parse(Game_Manager.Instance.startEnd.score2ndPlace.Split(' ')[1]))
+                {
+                    Game_Manager.Instance.startEnd.score5thPlace = Game_Manager.Instance.startEnd.score2ndPlace;
+                    Game_Manager.Instance.startEnd.score2ndPlace = "Player" + playerNumber + " " + score;
+                }
+                else if (score > int.Parse(Game_Manager.Instance.startEnd.score3rdPlace.Split(' ')[1]))
+                {
+                    Game_Manager.Instance.startEnd.score5thPlace = Game_Manager.Instance.startEnd.score3rdPlace;
+                    Game_Manager.Instance.startEnd.score3rdPlace = "Player" + playerNumber + " " + score;
+                }
+                else if (score > int.Parse(Game_Manager.Instance.startEnd.score4thPlace.Split(' ')[1]))
+                {
+                    Game_Manager.Instance.startEnd.score5thPlace = Game_Manager.Instance.startEnd.score4thPlace;
+                    Game_Manager.Instance.startEnd.score4thPlace = "Player" + playerNumber + " " + score;
+                }
+                else if (score > int.Parse(Game_Manager.Instance.startEnd.score5thPlace.Split(' ')[1]))
+                {
+                    Game_Manager.Instance.startEnd.score5thPlace = Game_Manager.Instance.startEnd.score5thPlace;
+                    Game_Manager.Instance.startEnd.score5thPlace = "Player" + playerNumber + " " + score;
                 }
             }
+
+            CmdSortAndAssignScores();
         }
         else
         {
-            Game_Manager.Instance.startEnd.topScores.Add(playerNumber + score.ToString());
+            if(Game_Manager.Instance.startEnd.score1stPlace == "First 0000")
+            {
+                Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + score;
+                Game_Manager.Instance.startEnd.numTopScores++;
+            }
+            else if (Game_Manager.Instance.startEnd.score2ndPlace == "Second 0000")
+            {
+                Game_Manager.Instance.startEnd.score2ndPlace = "Player" + playerNumber + " " + score;
+                Game_Manager.Instance.startEnd.numTopScores++;
+            }
+            else if (Game_Manager.Instance.startEnd.score3rdPlace == "Third 0000")
+            {
+                Game_Manager.Instance.startEnd.score3rdPlace = "Player" + playerNumber + " " + score;
+                Game_Manager.Instance.startEnd.numTopScores++;
+            }
+            else if (Game_Manager.Instance.startEnd.score4thPlace == "Fourth 0000")
+            {
+                Game_Manager.Instance.startEnd.score4thPlace = "Player" + playerNumber + " " + score;
+                Game_Manager.Instance.startEnd.numTopScores++;
+            }
+            else
+            {
+                Game_Manager.Instance.startEnd.score5thPlace = "Player" + playerNumber + " " + score;
+                Game_Manager.Instance.startEnd.numTopScores++;
+            }
+
+            CmdSortAndAssignScores();
         }
+    }
+
+    [Command]
+    public void CmdSortAndAssignScores()
+    {
+        int[] scores = new int[5];
+
+        scores[0] = int.Parse(Game_Manager.Instance.startEnd.score1stPlace.Split(' ')[1]);
+        scores[1] = int.Parse(Game_Manager.Instance.startEnd.score2ndPlace.Split(' ')[1]);
+        scores[2] = int.Parse(Game_Manager.Instance.startEnd.score3rdPlace.Split(' ')[1]);
+        scores[3] = int.Parse(Game_Manager.Instance.startEnd.score4thPlace.Split(' ')[1]);
+        scores[4] = int.Parse(Game_Manager.Instance.startEnd.score5thPlace.Split(' ')[1]);
+
+        Array.Sort(scores);
+
+        Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + scores[0];
+        Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + scores[1];
+        Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + scores[2];
+        Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + scores[3];
+        Game_Manager.Instance.startEnd.score1stPlace = "Player" + playerNumber + " " + scores[4];
     }
 
     public void SpawnPickupIcon()
@@ -323,7 +409,7 @@ public class Car_Controller : NetworkBehaviour
 
             if (health <= 0)
             {
-                Game_Manager.Instance.GameOver(this.gameObject, false, UICanvas);
+                CmdGameOver(false);
             }
         }
     }

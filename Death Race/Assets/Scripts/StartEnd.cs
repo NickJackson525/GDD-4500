@@ -16,24 +16,33 @@ public class StartEnd : NetworkBehaviour
     public int playerNumber = 1;
     [SyncVar]
     public int playersFinished = 0;
-    //[SyncVar]
-    //public Text score1stPlace;
-    //[SyncVar]
-    //public Text score2ndPlace;
-    //[SyncVar]
-    //public Text score3rdPlace;
-    //[SyncVar]
-    //public Text time1stPlace;
-    //[SyncVar]
-    //public Text time2ndPlace;
-    //[SyncVar]
-    //public Text time3rdPlace;
+    [SyncVar]
+    public int numTopScores = 0;
+    [SyncVar]
+    public int numTopTimes = 0;
+    [SyncVar]
+    public string score1stPlace = "First 0000";
+    [SyncVar]
+    public string score2ndPlace = "Second 0000";
+    [SyncVar]
+    public string score3rdPlace = "Third 0000";
+    [SyncVar]
+    public string score4thPlace = "Fourth 0000";
+    [SyncVar]
+    public string score5thPlace = "Fifth 0000";
+    [SyncVar]
+    public string time1stPlace = "First 0000";
+    [SyncVar]
+    public string time2ndPlace = "Second 0000";
+    [SyncVar]
+    public string time3rdPlace = "Third 0000";
+    [SyncVar]
+    public string time4thPlace = "Fourth 0000";
+    [SyncVar]
+    public string time5thPlace = "Fifth 0000";
 
-    public SyncListString topScores = new SyncListString();
-    public SyncListString topTimes = new SyncListString();
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
