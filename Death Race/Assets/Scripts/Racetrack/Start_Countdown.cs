@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 public class Start_Countdown : NetworkBehaviour
 {
+    public Sprite noLightsOn;
     public Sprite oneRedLightOn;
     public Sprite twoRedLightsOn;
     public Sprite threeRedLightsOn;
@@ -58,4 +59,12 @@ public class Start_Countdown : NetworkBehaviour
             }
         }
 	}
+
+    private void OnEnable()
+    {
+        WASD.SetActive(true);
+        Enter_Space.SetActive(true);
+        timer = 60;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = noLightsOn;
+    }
 }

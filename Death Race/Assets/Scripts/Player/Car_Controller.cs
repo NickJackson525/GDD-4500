@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Car_Controller : NetworkBehaviour
 {
@@ -44,6 +45,8 @@ public class Car_Controller : NetworkBehaviour
     Quaternion initialRotation;
     Quaternion tempRotation;
     Rigidbody2D rb;
+    Vector3 startPosition;
+    Quaternion startRotation;
 
     #endregion
 
@@ -62,6 +65,8 @@ public class Car_Controller : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Game_Manager.Instance.player = gameObject;
+        startPosition = transform.position;
+        startRotation = transform.rotation;
 
         if (!Game_Manager.Instance.startEnd)
         {
@@ -100,9 +105,15 @@ public class Car_Controller : NetworkBehaviour
                 Game_Manager.Instance.startEnd.playerNumber++;
             }
 
+            if(Game_Manager.Instance.startEnd.restartGame)
+            {
+                
+            }
+
             if(Input.GetKeyUp(KeyCode.Escape))
             {
-                UICanvas.GetComponent<UIController>().ShowHideHighScoreTable();
+                CmdRestartGame();
+                ResetGame();
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
@@ -366,6 +377,18 @@ public class Car_Controller : NetworkBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        Game_Manager.Instance.startEnd.restartGame = false;
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+        startLight.SetActive(true);
+        Game_Manager.Instance.startEnd.startGame = true;
+        score = 0;
+        hasPickup = false;
+        rb.velocity = Vector2.zero;
+    }
+
     [Command]
     public void CmdSortAndAssignScores()
     {
@@ -490,6 +513,12 @@ public class Car_Controller : NetworkBehaviour
     public void CmdStartGame()
     {
         Game_Manager.Instance.startEnd.startGame = true;
+    }
+
+    [Command]
+    public void CmdRestartGame()
+    {
+        Game_Manager.Instance.startEnd.restartGame = true;
     }
 
     #endregion

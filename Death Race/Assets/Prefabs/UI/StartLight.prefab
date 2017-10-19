@@ -57,21 +57,21 @@ MonoBehaviour:
     m_Value: 0
   m_AssetId:
     i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
+    i1: 27
+    i2: 174
+    i3: 112
+    i4: 62
+    i5: 159
+    i6: 48
+    i7: 180
+    i8: 72
+    i9: 130
+    i10: 84
+    i11: 63
+    i12: 131
+    i13: 14
+    i14: 17
+    i15: 45
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &114125660886145218
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be67e3cc27f6569459fb1dad8fe2d06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noLightsOn: {fileID: 21300000, guid: 075e8a9df51454505b062ecb4a81e95f, type: 3}
   oneRedLightOn: {fileID: 21300000, guid: 5ca9a143ef7f84716b5b1afb9c728ef5, type: 3}
   twoRedLightsOn: {fileID: 21300000, guid: 7d51f2e4a03b44c4caf92e1451022e9b, type: 3}
   threeRedLightsOn: {fileID: 21300000, guid: e9ec8c343fcbc4a0893e3ab383948e8b, type: 3}

@@ -9,6 +9,8 @@ public class StartEnd : NetworkBehaviour
     [SyncVar]
     public bool startGame = false;
     [SyncVar]
+    public bool restartGame = false;
+    [SyncVar]
     public bool endGame = false;
     [SyncVar]
     public float gameTime = 0;
@@ -52,10 +54,4 @@ public class StartEnd : NetworkBehaviour
     {
         gameTime += Time.deltaTime;
 	}
-
-    [Command]
-    public void CmdStartGame()
-    {
-        startGame = true;
-    }
 }
