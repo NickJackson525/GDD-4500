@@ -105,15 +105,14 @@ public class Car_Controller : NetworkBehaviour
                 Game_Manager.Instance.startEnd.playerNumber++;
             }
 
-            if(Game_Manager.Instance.startEnd.restartGame)
+            if(Game_Manager.Instance.startEnd.restartGame && !startLight.activeSelf)
             {
-                
+                ResetGame();
             }
 
             if(Input.GetKeyUp(KeyCode.Escape))
             {
                 CmdRestartGame();
-                ResetGame();
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
@@ -173,6 +172,11 @@ public class Car_Controller : NetworkBehaviour
 
             if ((startLight.activeSelf == false) && canMove)
             {
+                if(Game_Manager.Instance.startEnd.restartGame)
+                {
+                    CmdRestartGame();
+                }
+
                 #region Player Controls
 
                 if (Input.GetKey(KeyCode.W))
@@ -379,7 +383,6 @@ public class Car_Controller : NetworkBehaviour
 
     public void ResetGame()
     {
-        Game_Manager.Instance.startEnd.restartGame = false;
         transform.position = startPosition;
         transform.rotation = startRotation;
         startLight.SetActive(true);
@@ -518,7 +521,14 @@ public class Car_Controller : NetworkBehaviour
     [Command]
     public void CmdRestartGame()
     {
-        Game_Manager.Instance.startEnd.restartGame = true;
+        if(Game_Manager.Instance.startEnd.restartGame)
+        {
+            Game_Manager.Instance.startEnd.restartGame = false;
+        }
+        else
+        {
+            Game_Manager.Instance.startEnd.restartGame = true;
+        }
     }
 
     #endregion
