@@ -19,6 +19,7 @@ TagManager:
   - P2Health
   - p1Canvas
   - p2Canvas
+  - GameOverButtons
   layers:
   - Default
   - TransparentFX

@@ -48,4 +48,11 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void Restart()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        player.GetComponent<Car_Controller>().CmdRestartGame();
+    }
 }

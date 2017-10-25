@@ -105,12 +105,17 @@ public class Car_Controller : NetworkBehaviour
                 Game_Manager.Instance.startEnd.playerNumber++;
             }
 
-            if(Game_Manager.Instance.startEnd.restartGame && !startLight.activeSelf)
+            if(!Game_Manager.Instance.startEnd.startGame && !startLight.activeSelf)
             {
                 ResetGame();
             }
 
-            if(Input.GetKeyUp(KeyCode.Escape))
+            if (Game_Manager.Instance.startEnd.restartGame)
+            {
+                CmdRestartGame();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Escape))
             {
                 CmdRestartGame();
             }
@@ -172,11 +177,6 @@ public class Car_Controller : NetworkBehaviour
 
             if ((startLight.activeSelf == false) && canMove)
             {
-                if(Game_Manager.Instance.startEnd.restartGame)
-                {
-                    CmdRestartGame();
-                }
-
                 #region Player Controls
 
                 if (Input.GetKey(KeyCode.W))
@@ -237,7 +237,7 @@ public class Car_Controller : NetworkBehaviour
     public void CmdGameOver(bool didWin)
     {
         Game_Manager.Instance.startEnd.playersFinished++;
-        Game_Manager.Instance.GameOver(this.gameObject, didWin, UICanvas);
+        Game_Manager.Instance.GameOver(gameObject, didWin, UICanvas);
 
         if (!didWin)
         {
@@ -386,10 +386,11 @@ public class Car_Controller : NetworkBehaviour
         transform.position = startPosition;
         transform.rotation = startRotation;
         startLight.SetActive(true);
-        Game_Manager.Instance.startEnd.startGame = true;
         score = 0;
+        health = 100;
         hasPickup = false;
         rb.velocity = Vector2.zero;
+        Game_Manager.Instance.RestartUI();
     }
 
     [Command]
@@ -528,6 +529,7 @@ public class Car_Controller : NetworkBehaviour
         else
         {
             Game_Manager.Instance.startEnd.restartGame = true;
+            Game_Manager.Instance.startEnd.startGame = false;
         }
     }
 

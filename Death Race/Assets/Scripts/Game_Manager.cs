@@ -12,6 +12,7 @@ public class Game_Manager
     public enum Pickup { FAKE_PEDESTRIAN, KITTEN_CANNON, HARPOON, SHIELD }
     public GameObject[] playerWin;
     public GameObject[] playerLose;
+    public GameObject[] GameOverButtons;
     public GameObject[] playerHealth;
     public GameObject texts;
     public StartEnd startEnd;
@@ -54,26 +55,31 @@ public class Game_Manager
     {
         #region Get Object References
 
-        //p2Win = GameObject.FindGameObjectsWithTag("P1 Win");
-        //p2Lose = GameObject.FindGameObjectsWithTag("P1 Lose");
         playerWin = GameObject.FindGameObjectsWithTag("P1 Win");
         playerLose = GameObject.FindGameObjectsWithTag("P1 Lose");
+        GameOverButtons = GameObject.FindGameObjectsWithTag("GameOverButtons");
         texts = GameObject.FindGameObjectWithTag("Text");
         playerHealth = GameObject.FindGameObjectsWithTag("P1Health");
-        //p2Health = GameObject.FindGameObjectsWithTag("P2Health");
 
         #endregion
 
         #region Disable Canvas Elements
 
-        //p2Win[0].SetActive(false);
-        //p2Win[1].SetActive(false);
-        //p2Lose[0].SetActive(false);
-        //p2Lose[1].SetActive(false);
-        playerLose[0].SetActive(false);
-        playerLose[1].SetActive(false);
-        playerWin[0].SetActive(false);
-        playerWin[1].SetActive(false);
+        foreach (GameObject obj in playerLose)
+        {
+            obj.SetActive(false);
+        }
+
+        foreach (GameObject obj in playerWin)
+        {
+            obj.SetActive(false);
+        }
+
+        foreach (GameObject obj in GameOverButtons)
+        {
+            obj.SetActive(false);
+        }
+
         texts.SetActive(false);
 
         #endregion
@@ -87,6 +93,11 @@ public class Game_Manager
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         UICanvas.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 90f);
 
+        foreach (GameObject obj in GameOverButtons)
+        {
+            obj.SetActive(true);
+        }
+
         #endregion
 
         if (isWinner)
@@ -94,9 +105,7 @@ public class Game_Manager
             #region thisCar Wins
 
             playerWin[0].SetActive(true);
-            playerWin[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
             playerWin[1].SetActive(true);
-            playerWin[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
             #endregion
         }
@@ -105,11 +114,27 @@ public class Game_Manager
             #region thisCar Loses
 
             playerLose[0].SetActive(true);
-            playerLose[0].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
             playerLose[1].SetActive(true);
-            playerLose[1].transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
             #endregion
+        }
+    }
+
+    public void RestartUI()
+    {
+        foreach (GameObject obj in playerLose)
+        {
+            obj.SetActive(false);
+        }
+
+        foreach (GameObject obj in playerWin)
+        {
+            obj.SetActive(false);
+        }
+
+        foreach (GameObject obj in GameOverButtons)
+        {
+            obj.SetActive(false);
         }
     }
 
