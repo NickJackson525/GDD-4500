@@ -207,6 +207,10 @@ public class Car_Controller : NetworkBehaviour
 
                 #endregion
             }
+            else if(startLight.activeSelf == false && Game_Manager.Instance.startEnd.startGame)
+            {
+                startLight.SetActive(false);
+            }
 
             if (collisionTimer > 0)
             {
@@ -389,8 +393,18 @@ public class Car_Controller : NetworkBehaviour
         score = 0;
         health = 100;
         hasPickup = false;
+        canMove = true;
         rb.velocity = Vector2.zero;
         Game_Manager.Instance.RestartUI();
+
+        if (Game_Manager.Instance.playerHealth[0].name == "HealthBar")
+        {
+            Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.green;
+        }
     }
 
     [Command]
@@ -516,6 +530,7 @@ public class Car_Controller : NetworkBehaviour
     [Command]
     public void CmdStartGame()
     {
+        startLight = GameObject.FindGameObjectWithTag("StartLight");
         Game_Manager.Instance.startEnd.startGame = true;
     }
 

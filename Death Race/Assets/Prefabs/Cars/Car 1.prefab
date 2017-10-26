@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  score: 0
   currentPickup: 1
   hasPickup: 0
   kittenCannon: {fileID: 1183261969105206, guid: 6533b98c83051ab438f59bc47e3c3de7,
@@ -177,6 +178,7 @@ MonoBehaviour:
     type: 2}
   startEndController: {fileID: 1543891988872592, guid: e84dd900702b44e4186dc0a80fbd0aa8,
     type: 2}
+  playerNumber: 0
   checkpointsPassed: 0
   collisionTimer: 0
   hasBomb: 0
