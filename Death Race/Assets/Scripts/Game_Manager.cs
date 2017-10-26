@@ -91,11 +91,12 @@ public class Game_Manager
 
         player.GetComponent<Car_Controller>().canMove = false;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        UICanvas.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 90f);
+        //UICanvas.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 90f);
 
         foreach (GameObject obj in GameOverButtons)
         {
             obj.SetActive(true);
+            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, 0);
         }
 
         #endregion
@@ -105,7 +106,9 @@ public class Game_Manager
             #region thisCar Wins
 
             playerWin[0].SetActive(true);
+            playerWin[0].transform.position = new Vector3(playerWin[0].transform.position.x, playerWin[0].transform.position.y, 0);
             playerWin[1].SetActive(true);
+            playerWin[1].transform.position = new Vector3(playerWin[1].transform.position.x, playerWin[1].transform.position.y, 0);
 
             #endregion
         }
@@ -114,7 +117,9 @@ public class Game_Manager
             #region thisCar Loses
 
             playerLose[0].SetActive(true);
+            playerLose[0].transform.position = new Vector3(playerLose[0].transform.position.x, playerLose[0].transform.position.y, 0);
             playerLose[1].SetActive(true);
+            playerLose[1].transform.position = new Vector3(playerLose[1].transform.position.x, playerLose[1].transform.position.y, 0);
 
             #endregion
         }
