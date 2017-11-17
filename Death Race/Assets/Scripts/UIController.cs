@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public GameObject mainMenuWindow;
+    public GameObject loginCreateAccountWindow;
+    public GameObject lobbyWindow;
     public GameObject highScoreTable;
     public GameObject bestTimesTable;
+    public InputField Username;
+    public InputField Password;
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +25,48 @@ public class UIController : MonoBehaviour
     {
 
 	}
+
+    public void Login()
+    {
+        mainMenuWindow.SetActive(false);
+        loginCreateAccountWindow.SetActive(true);
+        lobbyWindow.SetActive(false);
+        Game_Manager.Instance.creatingAccount = false;
+    }
+
+    public void CreateAccount()
+    {
+        mainMenuWindow.SetActive(false);
+        loginCreateAccountWindow.SetActive(true);
+        lobbyWindow.SetActive(false);
+        Game_Manager.Instance.creatingAccount = true;
+    }
+
+    public void Submit()
+    {
+        if(Game_Manager.Instance.creatingAccount)
+        {
+            Game_Manager.Instance.SaveFile(gameObject, Username.GetComponentInChildren<Text>().text, Password.GetComponentInChildren<Text>().text);
+            mainMenuWindow.SetActive(true);
+            loginCreateAccountWindow.SetActive(false);
+            lobbyWindow.SetActive(false);
+        }
+        else
+        {
+            Game_Manager.Instance.LoadFile(gameObject, Username.GetComponentInChildren<Text>().text, Password.GetComponentInChildren<Text>().text);
+            mainMenuWindow.SetActive(false);
+            loginCreateAccountWindow.SetActive(false);
+            lobbyWindow.SetActive(true);
+        }
+    }
+
+    public void BackToMainMenu()
+    {
+        mainMenuWindow.SetActive(true);
+        loginCreateAccountWindow.SetActive(false);
+        lobbyWindow.SetActive(false);
+        Game_Manager.Instance.creatingAccount = false;
+    }
 
     public void ShowHideHighScoreTable()
     {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Game_Manager
 {
@@ -16,6 +18,12 @@ public class Game_Manager
     public GameObject[] playerHealth;
     public GameObject texts;
     public StartEnd startEnd;
+    public int Score1 = 0;
+    public int Score2 = 0;
+    public int Score3 = 0;
+    public int Score4 = 0;
+    public int Score5 = 0;
+    public bool creatingAccount = false;
 
     #endregion
 
@@ -140,6 +148,79 @@ public class Game_Manager
         foreach (GameObject obj in GameOverButtons)
         {
             obj.SetActive(false);
+        }
+    }
+
+    public void SaveFile(GameObject UIController, string username, string password, int score1 = 0, int score2 = 0, int score3 = 0, int score4 = 0, int score5 = 0)
+    {
+        string destination = Application.persistentDataPath + "/" + username + ".dat";
+        FileStream file;
+
+        //TODO: check if username and password are correct if the file exists (file exists means username already exists)
+
+        if (File.Exists(destination))
+        {
+            file = File.OpenWrite(destination);
+            SaveData data = new SaveData(password, score1, score2, score3, score4, score5);
+
+            if (password == data.getPassword())
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(file, data);
+                file.Close();
+            }
+            else
+            {
+                //incorrect password
+                UIController.GetComponent<UIController>().BackToMainMenu();
+            }
+        }
+        else
+        {
+            file = File.Create(destination);
+            SaveData data = new SaveData(password, score1, score2, score3, score4, score5);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, data);
+            file.Close();
+        }
+    }
+
+    public void LoadFile(GameObject UIController, string username, string password)
+    {
+        string destination = Application.persistentDataPath + "/" + username + ".dat";
+        FileStream file;
+
+        //check if username already exists
+        if (File.Exists(destination))
+        {
+            file = File.OpenRead(destination);
+        }
+        else
+        {
+            //TODO: add prompt here to create an account
+            Debug.LogError("File not found");
+            return;
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        SaveData data = (SaveData)bf.Deserialize(file);
+        file.Close();
+
+        if(password == data.getPassword())
+        {
+            //correct password
+            Score1 = data.Score1;
+            Score2 = data.Score2;
+            Score3 = data.Score3;
+            Score4 = data.Score4;
+            Score5 = data.Score5;
+
+            //TODO: make login interface dissapear, display high scores, and make start button appear
+        }
+        else
+        {
+            //incorrect password
+            UIController.GetComponent<UIController>().BackToMainMenu();
         }
     }
 

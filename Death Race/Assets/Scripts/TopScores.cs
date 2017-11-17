@@ -17,29 +17,26 @@ public class TopScores : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Game_Manager.Instance.startEnd)
+        switch (place)
         {
-            switch (place)
-            {
-                case 1:
-                    thisText.text = Game_Manager.Instance.startEnd.score1stPlace;
-                    break;
-                case 2:
-                    thisText.text = Game_Manager.Instance.startEnd.score2ndPlace;
-                    break;
-                case 3:
-                    thisText.text = Game_Manager.Instance.startEnd.score3rdPlace;
-                    break;
-                case 4:
-                    thisText.text = Game_Manager.Instance.startEnd.score4thPlace;
-                    break;
-                case 5:
-                    thisText.text = Game_Manager.Instance.startEnd.score5thPlace;
-                    break;
-                default:
-                    thisText.text = Game_Manager.Instance.startEnd.score1stPlace;
-                    break;
-            }
+            case 1:
+                thisText.text = "1 - " + Game_Manager.Instance.Score1.ToString();
+                break;
+            case 2:
+                thisText.text = "2 - " + Game_Manager.Instance.Score2.ToString();
+                break;
+            case 3:
+                thisText.text = "3 - " + Game_Manager.Instance.Score3.ToString();
+                break;
+            case 4:
+                thisText.text = "4 - " + Game_Manager.Instance.Score4.ToString();
+                break;
+            case 5:
+                thisText.text = "5 - " + Game_Manager.Instance.Score5.ToString();
+                break;
+            default:
+                thisText.text = "1 - " + Game_Manager.Instance.Score1.ToString();
+                break;
         }
 	}
 }
