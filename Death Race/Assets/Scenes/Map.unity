@@ -4085,19 +4085,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114127200616106970, guid: d67b7264b6adad74087b976d0b2db62a,
-        type: 2}
-      propertyPath: p1Canvas
-      value: 
-      objectReference: {fileID: 1452517504}
-    - target: {fileID: 114127200616106970, guid: d67b7264b6adad74087b976d0b2db62a,
-        type: 2}
-      propertyPath: p2Canvas
-      value: 
-      objectReference: {fileID: 1274537224}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d67b7264b6adad74087b976d0b2db62a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1556458845 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1242102334156300, guid: d67b7264b6adad74087b976d0b2db62a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1556458844}
+--- !u!114 &1556458846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556458845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 214
+    i1: 123
+    i2: 114
+    i3: 100
+    i4: 182
+    i5: 173
+    i6: 173
+    i7: 116
+    i8: 8
+    i9: 123
+    i10: 151
+    i11: 109
+    i12: 11
+    i13: 45
+    i14: 182
+    i15: 42
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &1627717251
 Prefab:
   m_ObjectHideFlags: 0

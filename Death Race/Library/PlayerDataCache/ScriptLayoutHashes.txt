@@ -115,9 +115,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 f887194f88eb018edfa1315486aaf22c Assembly-CSharp.dll:.Kitten_Cannon
 3f92bd28e672f0977721e64bd9b3fc7a Assembly-CSharp.dll:.Bomb_Explosion
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Camera_Follow
-31e14dd3c53eede730dbfb8bfcb5703f Assembly-CSharp.dll:.Finishline
+59f323896e437e0b3d98d04f31272102 Assembly-CSharp.dll:.Finishline
 1babff4a32e0e09881cd2760f5b9e3db Assembly-CSharp.dll:.Shield_Animation_Transition
-658fd50c389a5c386b5eb69a4d06395c Assembly-CSharp.dll:.UIController
+e7340bd602cb0f97bb3a39eb44d1e0da Assembly-CSharp.dll:.UIController
 a893166a1d13e3237e6b6010d6d63a27 Assembly-CSharp.dll:.Pickup_Icon
 8b6596f93b1fee1035874d72e6a25e5c Assembly-CSharp.dll:.StartEnd
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -138,6 +138,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnlineUsers
 eb9a8950e7f7da580901a9a9f16b9f01 Assembly-CSharp.dll:.Bomb_Drop
 347d82ffc2ef02c678c5c519d415b08f Assembly-CSharp.dll:.Shield_Animation_Close
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft

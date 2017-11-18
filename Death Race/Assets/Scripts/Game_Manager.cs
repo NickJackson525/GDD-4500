@@ -163,29 +163,37 @@ public class Game_Manager
             file = File.OpenWrite(destination);
             SaveData data = new SaveData(password, score1, score2, score3, score4, score5);
 
-            if (password == data.getPassword())
+            if ((password == data.getPassword()) && !creatingAccount)
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 bf.Serialize(file, data);
                 file.Close();
             }
-            else
+            else if(creatingAccount)
+            {
+                //username already exists
+                UIController.GetComponent<UIController>().ErrorPopup(2);
+            }
+            else if(password != data.getPassword())
             {
                 //incorrect password
-                UIController.GetComponent<UIController>().BackToMainMenu();
+                UIController.GetComponent<UIController>().ErrorPopup(1);
             }
         }
         else
         {
+            creatingAccount = false;
             file = File.Create(destination);
             SaveData data = new SaveData(password, score1, score2, score3, score4, score5);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, data);
             file.Close();
+
+            UIController.GetComponent<UIController>().SuccessCreateAccount();
         }
     }
 
-    public void LoadFile(GameObject UIController, string username, string password)
+    public void LoadFile(GameObject Controller, string username, string password)
     {
         string destination = Application.persistentDataPath + "/" + username + ".dat";
         FileStream file;
@@ -197,8 +205,7 @@ public class Game_Manager
         }
         else
         {
-            //TODO: add prompt here to create an account
-            Debug.LogError("File not found");
+            Controller.GetComponent<UIController>().ErrorPopup(3);
             return;
         }
 
@@ -215,12 +222,12 @@ public class Game_Manager
             Score4 = data.Score4;
             Score5 = data.Score5;
 
-            //TODO: make login interface dissapear, display high scores, and make start button appear
+            Controller.GetComponent<UIController>().SuccessfulLogin();
         }
         else
         {
             //incorrect password
-            UIController.GetComponent<UIController>().BackToMainMenu();
+            Controller.GetComponent<UIController>().ErrorPopup(1);
         }
     }
 

@@ -52,18 +52,46 @@ public class Car_Controller : NetworkBehaviour
 
     #region Start
 
-    public override void OnStartServer()
+    //public override void OnStartServer()
+    //{
+    //    if (!Game_Manager.Instance.startEnd)
+    //    {
+    //        GameObject newObject = Instantiate(startEndController);
+    //        NetworkServer.Spawn(newObject);
+    //        Game_Manager.Instance.startEnd = newObject.GetComponent<StartEnd>();
+    //    }
+    //}
+
+    //public override void OnStartLocalPlayer()
+    //{
+    //    Game_Manager.Instance.player = gameObject;
+    //    startPosition = transform.position;
+    //    startRotation = transform.rotation;
+
+    //    if (!Game_Manager.Instance.startEnd)
+    //    {
+    //        Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
+    //    }
+
+    //    playerNumber = Game_Manager.Instance.startEnd.playerNumber;
+    //    Game_Manager.Instance.startEnd.playerNumber++;
+    //}
+
+    // Use this for initialization
+    void Start()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (!Game_Manager.Instance.startEnd)
         {
             GameObject newObject = Instantiate(startEndController);
             NetworkServer.Spawn(newObject);
             Game_Manager.Instance.startEnd = newObject.GetComponent<StartEnd>();
         }
-    }
 
-    public override void OnStartLocalPlayer()
-    {
         Game_Manager.Instance.player = gameObject;
         startPosition = transform.position;
         startRotation = transform.rotation;
@@ -75,15 +103,6 @@ public class Car_Controller : NetworkBehaviour
 
         playerNumber = Game_Manager.Instance.startEnd.playerNumber;
         Game_Manager.Instance.startEnd.playerNumber++;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        if(!isLocalPlayer)
-        {
-            return;
-        }
 
         startLight = GameObject.FindGameObjectWithTag("StartLight");
         initialRotation = transform.rotation;

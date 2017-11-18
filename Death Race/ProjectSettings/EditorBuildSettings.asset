@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: 
     guid: ed4f0c8ba42258445806ab2e14db5ee4
   - enabled: 1
+    path: Assets/Scenes/Offline.unity
+    guid: 04333ff3490d48241adf7b1a084efe80
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 69b6b26c2de80124780d5a56d0221229
   - enabled: 1
