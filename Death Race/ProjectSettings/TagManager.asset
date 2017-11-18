@@ -6,8 +6,20 @@ TagManager:
   tags:
   - BombPickup
   - Player1
-  - Player2
   - StartLight
+  - Shield
+  - Checkpoint
+  - P1 Win
+  - P1 Lose
+  - P2 Win
+  - P2 Lose
+  - Racetrack
+  - Text
+  - P1Health
+  - P2Health
+  - p1Canvas
+  - p2Canvas
+  - GameOverButtons
   layers:
   - Default
   - TransparentFX
@@ -17,11 +29,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player 1
+  - Player 2
+  - Shield
+  - Players
+  - Powerup
   - 
   - 
   - 
