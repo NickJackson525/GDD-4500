@@ -30,7 +30,7 @@ public class Start_Countdown : NetworkBehaviour
 
             if (timer == 0)
             {
-                switch (this.gameObject.GetComponent<SpriteRenderer>().sprite.name)
+                switch (gameObject.GetComponent<SpriteRenderer>().sprite.name)
                 {
                     case "All_Off":
                         timer = 60;
@@ -65,6 +65,6 @@ public class Start_Countdown : NetworkBehaviour
         WASD.SetActive(true);
         Enter_Space.SetActive(true);
         timer = 60;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = noLightsOn;
+        gameObject.GetComponent<SpriteRenderer>().sprite = noLightsOn;
     }
 }

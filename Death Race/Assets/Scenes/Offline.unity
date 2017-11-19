@@ -157,6 +157,11 @@ Prefab:
       propertyPath: m_OnlineScene
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 114057092679271710, guid: e71e3a6af937da647a43321b3e210761,
+        type: 2}
+      propertyPath: m_AutoCreatePlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e71e3a6af937da647a43321b3e210761, type: 2}
   m_IsPrefabParent: 0

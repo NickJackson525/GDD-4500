@@ -15,7 +15,7 @@ public class Finishline : NetworkBehaviour
     void Start ()
     {
         Game_Manager.Instance.GameStart();
-        CmdSpawnPlayer();
+        //CmdSpawnPlayer();
         allCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
     }
 	
@@ -25,48 +25,48 @@ public class Finishline : NetworkBehaviour
 
 	}
 
-    [Command]
-    private void CmdSpawnPlayer()
-    {
-        createdPlayer = Instantiate(playerPrefab, transform.position, transform.rotation);
-        NetworkServer.Spawn(createdPlayer);
+    //[Command]
+    //private void CmdSpawnPlayer()
+    //{
+    //    createdPlayer = Instantiate(playerPrefab, transform.position, transform.rotation);
+    //    NetworkServer.Spawn(createdPlayer);
 
-        switch (createdPlayer.GetComponent<Car_Controller>().playerNumber)
-        {
-            case 1:
-                spawnPoint = GameObject.Find("SpawnPosition1");
-                break;
-            case 2:
-                spawnPoint = GameObject.Find("SpawnPosition2");
-                break;
-            case 3:
-                spawnPoint = GameObject.Find("SpawnPosition3");
-                break;
-            case 4:
-                spawnPoint = GameObject.Find("SpawnPosition4");
-                break;
-            case 5:
-                spawnPoint = GameObject.Find("SpawnPosition5");
-                break;
-            case 6:
-                spawnPoint = GameObject.Find("SpawnPosition6");
-                break;
-            case 7:
-                spawnPoint = GameObject.Find("SpawnPosition7");
-                break;
-            case 8:
-                spawnPoint = GameObject.Find("SpawnPosition8");
-                break;
-        }
+    //    switch (createdPlayer.GetComponent<Car_Controller>().playerNumber)
+    //    {
+    //        case 1:
+    //            spawnPoint = GameObject.Find("SpawnPosition1");
+    //            break;
+    //        case 2:
+    //            spawnPoint = GameObject.Find("SpawnPosition2");
+    //            break;
+    //        case 3:
+    //            spawnPoint = GameObject.Find("SpawnPosition3");
+    //            break;
+    //        case 4:
+    //            spawnPoint = GameObject.Find("SpawnPosition4");
+    //            break;
+    //        case 5:
+    //            spawnPoint = GameObject.Find("SpawnPosition5");
+    //            break;
+    //        case 6:
+    //            spawnPoint = GameObject.Find("SpawnPosition6");
+    //            break;
+    //        case 7:
+    //            spawnPoint = GameObject.Find("SpawnPosition7");
+    //            break;
+    //        case 8:
+    //            spawnPoint = GameObject.Find("SpawnPosition8");
+    //            break;
+    //    }
 
-        createdPlayer.transform.position = spawnPoint.transform.position;
-    }
+    //    createdPlayer.transform.position = spawnPoint.transform.position;
+    //}
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag.Contains("Player"))
         {
-            if (coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed == allCheckpoints.Length)
+            if (coll.gameObject.GetComponent<Car_Controller>().checkpointsPassed >= allCheckpoints.Length)
             {
                 coll.gameObject.GetComponent<Car_Controller>().CmdGameOver(true);
             }

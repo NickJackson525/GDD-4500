@@ -47,6 +47,7 @@ public class Car_Controller : NetworkBehaviour
     Rigidbody2D rb;
     Vector3 startPosition;
     Quaternion startRotation;
+    string prevSceneName;
 
     #endregion
 
@@ -85,29 +86,31 @@ public class Car_Controller : NetworkBehaviour
             return;
         }
 
-        if (!Game_Manager.Instance.startEnd)
-        {
-            GameObject newObject = Instantiate(startEndController);
-            NetworkServer.Spawn(newObject);
-            Game_Manager.Instance.startEnd = newObject.GetComponent<StartEnd>();
-        }
+        DontDestroyOnLoad(this);
 
-        Game_Manager.Instance.player = gameObject;
-        startPosition = transform.position;
-        startRotation = transform.rotation;
+        //if (!Game_Manager.Instance.startEnd)
+        //{
+        //    GameObject newObject = Instantiate(startEndController);
+        //    NetworkServer.Spawn(newObject);
+        //    Game_Manager.Instance.startEnd = newObject.GetComponent<StartEnd>();
+        //}
 
-        if (!Game_Manager.Instance.startEnd)
-        {
-            Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
-        }
+        //Game_Manager.Instance.player = gameObject;
+        //startPosition = transform.position;
+        //startRotation = transform.rotation;
 
-        playerNumber = Game_Manager.Instance.startEnd.playerNumber;
-        Game_Manager.Instance.startEnd.playerNumber++;
+        //if (!Game_Manager.Instance.startEnd)
+        //{
+        //    Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
+        //}
 
-        startLight = GameObject.FindGameObjectWithTag("StartLight");
-        initialRotation = transform.rotation;
-        UICanvas = GameObject.FindGameObjectWithTag("p1Canvas");
-        rb = GetComponent<Rigidbody2D>();
+        //playerNumber = Game_Manager.Instance.startEnd.playerNumber;
+        //Game_Manager.Instance.startEnd.playerNumber++;
+
+        //startLight = GameObject.FindGameObjectWithTag("StartLight");
+        //initialRotation = transform.rotation;
+        //UICanvas = GameObject.FindGameObjectWithTag("p1Canvas");
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     #endregion
@@ -118,18 +121,55 @@ public class Car_Controller : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            if((playerNumber == 0) && (Game_Manager.Instance.startEnd))
+            if (prevSceneName != SceneManager.GetActiveScene().name)
+            {
+                if (SceneManager.GetActiveScene().name == "Map")
+                {
+                    NetworkServer.SpawnObjects();
+
+                    if (!Game_Manager.Instance.startEnd)
+                    {
+                        GameObject newObject = Instantiate(startEndController);
+                        NetworkServer.Spawn(newObject);
+                        Game_Manager.Instance.startEnd = newObject.GetComponent<StartEnd>();
+                    }
+
+                    Game_Manager.Instance.player = gameObject;
+                    startPosition = transform.position;
+                    startRotation = transform.rotation;
+
+                    if (!Game_Manager.Instance.startEnd)
+                    {
+                        Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
+                    }
+
+                    playerNumber = Game_Manager.Instance.startEnd.playerNumber;
+                    Game_Manager.Instance.startEnd.playerNumber++;
+
+                    startLight = GameObject.FindGameObjectWithTag("StartLight");
+                    initialRotation = transform.rotation;
+                    UICanvas = GameObject.FindGameObjectWithTag("p1Canvas");
+                    rb = GetComponent<Rigidbody2D>();
+                    prevSceneName = SceneManager.GetActiveScene().name;
+                }
+            }
+            else
+            {
+                prevSceneName = SceneManager.GetActiveScene().name;
+            }
+
+            if ((playerNumber == 0) && (Game_Manager.Instance.startEnd))
             {
                 playerNumber = Game_Manager.Instance.startEnd.playerNumber;
                 Game_Manager.Instance.startEnd.playerNumber++;
             }
 
-            if(!Game_Manager.Instance.startEnd.startGame && !startLight.activeSelf)
+            if (Game_Manager.Instance.startEnd && startLight && !Game_Manager.Instance.startEnd.startGame && !startLight.activeSelf)
             {
                 ResetGame();
             }
 
-            if (Game_Manager.Instance.startEnd.restartGame)
+            if (Game_Manager.Instance.startEnd && Game_Manager.Instance.startEnd.restartGame)
             {
                 CmdRestartGame();
             }
@@ -144,45 +184,47 @@ public class Car_Controller : NetworkBehaviour
                 CmdStartGame();
             }
 
-            if (!Game_Manager.Instance.startEnd)
+            if (!Game_Manager.Instance.startEnd && (SceneManager.GetActiveScene().name == "Map"))
             {
                 Game_Manager.Instance.startEnd = GameObject.Find("StartEndController(Clone)").GetComponent<StartEnd>();
             }
 
             #region Player 1 Health
 
-            Game_Manager.Instance.playerHealth[0].transform.position = transform.position;
-            Game_Manager.Instance.playerHealth[0].transform.rotation = transform.rotation;
-            Game_Manager.Instance.playerHealth[1].transform.position = transform.position;
-            Game_Manager.Instance.playerHealth[1].transform.rotation = transform.rotation;
-
-            if (Game_Manager.Instance.playerHealth[0].name == "HealthBar")
+            if (Game_Manager.Instance.playerHealth != null)
             {
-                Game_Manager.Instance.playerHealth[0].GetComponent<Image>().fillAmount = (float)health / 100f;
+                Game_Manager.Instance.playerHealth[0].transform.position = transform.position;
+                Game_Manager.Instance.playerHealth[0].transform.rotation = transform.rotation;
+                Game_Manager.Instance.playerHealth[1].transform.position = transform.position;
+                Game_Manager.Instance.playerHealth[1].transform.rotation = transform.rotation;
 
-                if (health <= 25)
+                if (Game_Manager.Instance.playerHealth[0].name == "HealthBar")
                 {
-                    Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.red;
+                    Game_Manager.Instance.playerHealth[0].GetComponent<Image>().fillAmount = (float)health / 100f;
+
+                    if (health <= 25)
+                    {
+                        Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.red;
+                    }
+                    else if (health <= 50)
+                    {
+                        Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.yellow;
+                    }
                 }
-                else if (health <= 50)
+                else
                 {
-                    Game_Manager.Instance.playerHealth[0].GetComponent<Image>().color = Color.yellow;
+                    Game_Manager.Instance.playerHealth[1].GetComponent<Image>().fillAmount = (float)health / 100f;
+
+                    if (health <= 25)
+                    {
+                        Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.red;
+                    }
+                    else if (health <= 50)
+                    {
+                        Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.yellow;
+                    }
                 }
             }
-            else
-            {
-                Game_Manager.Instance.playerHealth[1].GetComponent<Image>().fillAmount = (float)health / 100f;
-
-                if (health <= 25)
-                {
-                    Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.red;
-                }
-                else if (health <= 50)
-                {
-                    Game_Manager.Instance.playerHealth[1].GetComponent<Image>().color = Color.yellow;
-                }
-            }
-
             #endregion
         }
     }
@@ -192,52 +234,55 @@ public class Car_Controller : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            rb.velocity = getForewordVelocity(rb) + getSidewaysVelocity(rb) * driftPower;
-
-            if ((startLight.activeSelf == false) && canMove)
+            if (SceneManager.GetActiveScene().name == "Map")
             {
-                #region Player Controls
+                rb.velocity = getForewordVelocity(rb) + getSidewaysVelocity(rb) * driftPower;
 
-                if (Input.GetKey(KeyCode.W))
+                if ((!startLight || (startLight.activeSelf == false)) && canMove)
                 {
-                    rb.AddForce(transform.up * speed);
+                    #region Player Controls
+
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        rb.AddForce(transform.up * speed);
+                    }
+
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        rb.AddForce(transform.up * (-speed / 2));
+                    }
+
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        rb.angularVelocity = -turnPower;
+                    }
+
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        rb.angularVelocity = turnPower;
+                    }
+
+                    if (hasPickup && Input.GetKeyUp(KeyCode.Space))
+                    {
+                        CmdUsePickup(currentPickup);
+                        hasPickup = false;
+                    }
+
+                    #endregion
+                }
+                else if ((startLight && (startLight.activeSelf == false)) && Game_Manager.Instance.startEnd.startGame)
+                {
+                    startLight.SetActive(false);
                 }
 
-                if (Input.GetKey(KeyCode.S))
+                if (collisionTimer > 0)
                 {
-                    rb.AddForce(transform.up * (-speed / 2));
+                    collisionTimer--;
                 }
-
-                if (Input.GetKey(KeyCode.A))
+                else
                 {
-                    rb.angularVelocity = -turnPower;
+                    canCollide = true;
                 }
-
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.angularVelocity = turnPower;
-                }
-
-                if (hasPickup && Input.GetKeyUp(KeyCode.Space))
-                {
-                    CmdUsePickup(currentPickup);
-                    hasPickup = false;
-                }
-
-                #endregion
-            }
-            else if(startLight.activeSelf == false && Game_Manager.Instance.startEnd.startGame)
-            {
-                startLight.SetActive(false);
-            }
-
-            if (collisionTimer > 0)
-            {
-                collisionTimer--;
-            }
-            else
-            {
-                canCollide = true;
             }
         }
     }

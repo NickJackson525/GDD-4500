@@ -4123,7 +4123,7 @@ MonoBehaviour:
     i13: 45
     i14: 182
     i15: 42
-  m_ServerOnly: 1
+  m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!1001 &1627717251
 Prefab:
@@ -5510,7 +5510,7 @@ Prefab:
     - target: {fileID: 114423320873259376, guid: 21f077586b6d5ff48b006fed5aa19786,
         type: 2}
       propertyPath: m_LocalPlayerAuthority
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21f077586b6d5ff48b006fed5aa19786, type: 2}
