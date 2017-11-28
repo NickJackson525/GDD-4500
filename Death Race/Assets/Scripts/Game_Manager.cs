@@ -10,6 +10,40 @@ public class Game_Manager
 {
     #region Variables
 
+    #region Car Dictionary
+
+    public Dictionary<CarType, Dictionary<CarTrait, float>> Cars = new Dictionary<CarType, Dictionary<CarTrait, float>>
+    {
+        {
+            CarType.LIGHT, new Dictionary<CarTrait, float>
+            {
+                {CarTrait.HEALTH, 100},
+                {CarTrait.SPEED, 3},
+                {CarTrait.TURNPOWER, 1}
+            }
+        },
+        {
+            CarType.NORMAL, new Dictionary<CarTrait, float>
+            {
+                {CarTrait.HEALTH, 100},
+                {CarTrait.SPEED, 3},
+                {CarTrait.TURNPOWER, 1}
+            }
+        },
+        {
+            CarType.HEAVY, new Dictionary<CarTrait, float>
+            {
+                {CarTrait.HEALTH, 100},
+                {CarTrait.SPEED, 3},
+                {CarTrait.TURNPOWER, 1}
+            }
+        }
+    };
+
+    #endregion
+
+    public enum CarType { LIGHT, NORMAL, HEAVY}
+    public enum CarTrait { HEALTH, SPEED, TURNPOWER}
     public GameObject player;
     public enum Pickup { FAKE_PEDESTRIAN, KITTEN_CANNON, HARPOON, SHIELD }
     public GameObject[] playerWin;

@@ -293,7 +293,7 @@ public class Car_Controller : NetworkBehaviour
 
     Vector2 getForewordVelocity(Rigidbody2D rb)
     {
-        return transform.up * Vector2.Dot(rb.velocity, transform.up);
+        return transform != null ? transform.up * Vector2.Dot(rb.velocity, transform.up) : Vector3.zero;
     }
 
     Vector2 getSidewaysVelocity(Rigidbody2D rb)
