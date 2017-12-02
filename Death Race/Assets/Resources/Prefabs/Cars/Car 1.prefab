@@ -159,6 +159,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   score: 0
+  lightCar: {fileID: 21300000, guid: 66bdbfc4a38178e499e658f1d891182f, type: 3}
+  normalCar: {fileID: 21300000, guid: 249e6f3976ab2394c83a94e53e5d7386, type: 3}
+  heavyCar: {fileID: 21300000, guid: b94746522f2b44145896a54dd748b9b0, type: 3}
+  speed: 17
   currentPickup: 1
   hasPickup: 0
   kittenCannon: {fileID: 1183261969105206, guid: 6533b98c83051ab438f59bc47e3c3de7,
@@ -178,6 +182,7 @@ MonoBehaviour:
     type: 2}
   startEndController: {fileID: 1543891988872592, guid: e84dd900702b44e4186dc0a80fbd0aa8,
     type: 2}
+  turnPower: -110
   playerNumber: 0
   checkpointsPassed: 0
   collisionTimer: 0

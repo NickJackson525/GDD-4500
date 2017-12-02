@@ -149,6 +149,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 663576a56d2d11d2ef0a59afa898a2ab Assembly-CSharp.dll:.Shield_Pickup
 95ec1ec0162966bd2d721f30f4a6c508 Assembly-CSharp.dll:.Fire_Timer
 1b0d8c020c83261d60d452a48bb7fe0c Assembly-CSharp.dll:.Start_Countdown
-f93bd417dbc97c2b8efd56b7bac67cf1 Assembly-CSharp.dll:.Car_Controller
+bea49523840e1f091336b893707507c0 Assembly-CSharp.dll:.Car_Controller
 c852ac4fde2748caabba5bea1dcfb3c9 Assembly-CSharp.dll:.Fake_Pedestrian
 ba0c95b7c0ab528f2e1d93299e8d8d7d Assembly-CSharp.dll:.TopScores
+a08b7d1588d68a1935a0bba2a4ada020 Assembly-CSharp.dll:.SelectCar

@@ -11,10 +11,14 @@ public class Car_Controller : NetworkBehaviour
     #region Variables
 
     [SyncVar]
-    public int health = 100;
+    public float health = 100;
     [SyncVar]
     public int score = 0;
 
+    public Sprite lightCar;
+    public Sprite normalCar;
+    public Sprite heavyCar;
+    public float speed = 17f;
     public Game_Manager.Pickup currentPickup = Game_Manager.Pickup.KITTEN_CANNON;
     public bool hasPickup = false;
     GameObject createdIcon;
@@ -32,8 +36,7 @@ public class Car_Controller : NetworkBehaviour
     public GameObject startEndController;
     GameObject startLight;
     GameObject temp;
-    float speed = 17f;
-    float turnPower = -110f;
+    public float turnPower = -110f;
     float driftPower = 0.95f;
     public int playerNumber = 0;
     public int checkpointsPassed = 0;
@@ -121,6 +124,20 @@ public class Car_Controller : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            switch(Game_Manager.Instance.currentCarType)
+            {
+                case Game_Manager.CarType.LIGHT:
+                    GetComponent<SpriteRenderer>().sprite = lightCar;
+                    break;
+                case Game_Manager.CarType.NORMAL:
+                    GetComponent<SpriteRenderer>().sprite = normalCar;
+                    break;
+                case Game_Manager.CarType.HEAVY:
+                    GetComponent<SpriteRenderer>().sprite = heavyCar;
+                    transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    break;
+            }
+
             if (prevSceneName != SceneManager.GetActiveScene().name)
             {
                 if (SceneManager.GetActiveScene().name == "Map")

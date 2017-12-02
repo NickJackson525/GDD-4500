@@ -17,25 +17,25 @@ public class Game_Manager
         {
             CarType.LIGHT, new Dictionary<CarTrait, float>
             {
-                {CarTrait.HEALTH, 100},
-                {CarTrait.SPEED, 3},
-                {CarTrait.TURNPOWER, 1}
+                {CarTrait.HEALTH, 50},
+                {CarTrait.SPEED, 20},
+                {CarTrait.TURNPOWER, -140}
             }
         },
         {
             CarType.NORMAL, new Dictionary<CarTrait, float>
             {
                 {CarTrait.HEALTH, 100},
-                {CarTrait.SPEED, 3},
-                {CarTrait.TURNPOWER, 1}
+                {CarTrait.SPEED, 15},
+                {CarTrait.TURNPOWER, -110}
             }
         },
         {
             CarType.HEAVY, new Dictionary<CarTrait, float>
             {
-                {CarTrait.HEALTH, 100},
-                {CarTrait.SPEED, 3},
-                {CarTrait.TURNPOWER, 1}
+                {CarTrait.HEALTH, 150},
+                {CarTrait.SPEED, 10},
+                {CarTrait.TURNPOWER, -80}
             }
         }
     };
@@ -58,6 +58,7 @@ public class Game_Manager
     public int Score4 = 0;
     public int Score5 = 0;
     public bool creatingAccount = false;
+    public CarType currentCarType = CarType.NORMAL;
 
     #endregion
 
